@@ -1,0 +1,16 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Collection extras",
+  "Publisher": "Fuse Open",
+  "Includes": [
+    "Extensions/EmptyEnumerable.uno:Source",
+    "Extensions/EnumerableExtensions.uno:Source",
+    "Extensions/IListExtensions.uno:Source",
+    "Extensions/OfType.uno:Source",
+    "Extensions/OrderBy.uno:Source",
+    "Extensions/Select.uno:Source",
+    "Extensions/Union.uno:Source",
+    "Extensions/Where.uno:Source",
+    "ObservableList.uno:Source"
+  ]
+}

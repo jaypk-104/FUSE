@@ -1,0 +1,63 @@
+<App Background="White">
+
+    <Router ux:Name="router" BackButtonAction="None" />
+	<Font File="./Assets/AGOTHIC14.TTF" ux:Global="AGOTHIC14" />
+	
+	<Font File="./Assets/JejuGothic.ttf" ux:Global="JEJU" />
+	<Font File="./Assets/ZhongF.TTF" ux:Global="ZhongF" />
+	<Font File="./Assets/SeoulNamsanM.ttf" ux:Global="SEOUL" />
+	<Font File="./Assets/NotoSans-Medium.ttf" ux:Global="NOTO_M" />
+	<Font File="./Assets/NotoSans-Regular.ttf" ux:Global="NOTO_R" />
+	<Font File="./Assets/NotoSansKR-Light.otf" ux:Global="NOTO_KR_L" />
+	<Font File="./Assets/NotoSansKR-Medium.otf" ux:Global="NOTO_KR_B" />
+	<Font File="./Assets/NotoSansKR-Regular.otf" ux:Global="NOTO_KR_R" />
+	<Font File="./Assets/NotoSansKR-Thin.otf" ux:Global="NOTO_KR_T" />
+	<Font File="./Assets/NotoSansKR-Black.otf" ux:Global="NOTO_KR_BK" />
+	<Font File="./Assets/FontAwesome.otf" ux:Global="FontAwesome" />
+
+	<Android.StatusBarConfig IsVisible="true" />
+	
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var G_USR_ID = '';
+		var G_BP_CD = '';
+		var g_BP_NM = '';
+		var g_USR_NM = '';
+		var cancel_type = '';
+		var device = '';
+		var main_yn = 'Y';
+		var temp_ios_date = 'default';
+		var page_name = 'login';
+
+		var Environment = require('FuseJS/Environment');
+
+    	if(Environment.ios)        {console.log("It's iOS!"); }
+		if(Environment.android)    {console.log("It's Android");}
+		if(Environment.preview)    {console.log("It's Preview!");}
+		if(Environment.mobile)    {console.log("It's on mobile!");}
+		
+
+		module.exports = {
+			G_USR_ID: G_USR_ID,
+			G_BP_CD: G_BP_CD,
+			g_BP_NM: g_BP_NM,
+			g_USR_NM: g_USR_NM,
+			main_yn: main_yn,
+			temp_ios_date: temp_ios_date,
+			page_name: page_name
+		};
+	</JavaScript>
+	
+	<TopFrameBackground Dock="Top" />
+	<BottomFrameBackground Dock="Bottom" />
+	 
+    <Navigator DefaultPath="login">
+    	<LoginPage ux:Template="login" router="router" />
+    	<s_inq01 ux:Template="s_inq1" router="router" />
+    	<c_menu ux:Template="c_menu" router="router" />
+    	<c_gr ux:Template="c_gr" router="router" />
+    	<c_appr ux:Template="c_appr" router="router" />
+    	<c_inq ux:Template="c_inq" router="router" />
+    	<c_po ux:Template="c_po" router="router" />
+	</Navigator>
+</App>

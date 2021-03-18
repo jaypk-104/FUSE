@@ -1,0 +1,19 @@
+<Extensions Backend="CPlusPlus" Condition="USE_V8">
+	<Require Condition="OSX" LinkDirectory="@('lib/OSX':Path)" />
+	<Require Condition="WIN32" LinkDirectory="@('lib/Windows':Path)" />
+	<Require Condition="WIN32" SharedLibrary="@('lib/Windows/V8Simple.dll':Path)" />
+	<Require IncludeDirectory="@('.':Path)" />
+	<Require Condition="!ANDROID" LinkLibrary="V8Simple" />
+
+	<!-- Build V8Simple on Android, and link static V8 -->
+	<CopyFile Condition="ANDROID" SourceFile="include/V8Simple.cpp" />
+	<Require Condition="ANDROID" IncludeDirectory="@('android/include':Path)" />
+	<Require Condition="ANDROID" IncludeDirectory="@('android/lib/${ANDROID_ABI}/include':Path)" />
+	<Require Condition="ANDROID" StaticLibrary="@('android/lib/${ANDROID_ABI}/libv8.a':Path)" />
+
+	<!-- V8 binary includes a custom-built version of STL; configure to link that version -->
+	<Require Condition="ANDROID" PreprocessorDefinition="_LIBCPP_ABI_VERSION=Cr" />
+	<Require Condition="ANDROID" PreprocessorDefinition="_LIBCPP_ABI_NAMESPACE=__Cr" />
+	<Require Condition="ANDROID" PreprocessorDefinition="_LIBCPP_ENABLE_NODISCARD" />
+	<Require Condition="ANDROID" PreprocessorDefinition="_LIBCPP_ABI_UNSTABLE" />
+</Extensions>

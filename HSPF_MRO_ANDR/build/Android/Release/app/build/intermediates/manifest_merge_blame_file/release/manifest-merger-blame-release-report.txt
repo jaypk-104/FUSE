@@ -1,0 +1,153 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.apps.hsmro"
+4    android:versionCode="13"
+5    android:versionName="0.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml
+10
+11    <uses-feature android:glEsVersion="0x00020000" />
+11-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:5:5-53
+11-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:5:19-51
+12
+13    <uses-permission android:name="android.permission.WAKE_LOCK" />
+13-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:7:5-68
+13-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:7:22-65
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:8:5-81
+14-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:8:22-78
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:9:5-67
+15-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:9:22-64
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:10:5-79
+16-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:10:22-76
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:11:5-66
+17-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:11:22-63
+18    <uses-permission android:name="android.permission.CAMERA" />
+18-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:12:5-65
+18-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:12:22-62
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:13:5-80
+19-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:13:22-77
+20
+21    <uses-feature android:name="android.hardware.camera" />
+21-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:14:5-59
+21-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:14:19-57
+22    <uses-feature android:name="android.hardware.camera.autofocus" />
+22-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:15:5-69
+22-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:15:19-67
+23
+24    <application
+24-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:20:5-93:19
+25        android:allowBackup="false"
+25-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:24:18-45
+26        android:description="@string/description"
+26-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:22:18-59
+27        android:icon="@mipmap/icon"
+27-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:21:18-45
+28        android:label="@string/app_name"
+28-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:20:54-86
+29        android:largeHeap="false"
+29-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:23:18-43
+30        android:usesCleartextTraffic="true" >
+30-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:20:18-53
+31        <activity
+31-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:26:9-75:20
+32            android:name="com.apps.hsmro.HSMRO"
+32-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:26:19-39
+33            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize"
+33-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:36:19-99
+34            android:label="HS MRO"
+34-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:27:19-41
+35            android:launchMode="singleTask"
+35-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:28:19-50
+36            android:screenOrientation="user"
+36-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:46:19-51
+37            android:taskAffinity=""
+37-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:34:19-42
+38            android:theme="@style/AppTheme"
+38-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:30:19-50
+39            android:windowActionBar="false"
+39-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:48:19-50
+40            android:windowSoftInputMode="adjustResize" >
+40-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:35:19-61
+41            <meta-data
+41-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:49:13-84
+42                android:name="android.app.lib_name"
+42-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:49:24-59
+43                android:value="HSMRO" />
+43-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:49:60-81
+44
+45            <intent-filter>
+45-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:50:13-53:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:51:17-69
+46-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:51:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:52:17-77
+48-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:52:27-74
+49            </intent-filter>
+50            <intent-filter>
+50-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:54:13-62:29
+51                <action android:name="android.intent.action.VIEW" />
+51-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:55:17-69
+51-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:55:25-66
+52
+53                <category android:name="android.intent.category.DEFAULT" />
+53-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:56:17-76
+53-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:56:27-73
+54                <category android:name="android.intent.category.BROWSABLE" />
+54-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:57:17-78
+54-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:57:27-75
+55            </intent-filter>
+56        </activity>
+57
+58        <provider
+58-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:78:9-86:12
+59            android:name="com.fuse.fileprovider.CameraFileProvider"
+59-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:79:2-57
+60            android:authorities="com.apps.hsmro.camera_file_provider"
+60-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:80:2-59
+61            android:exported="false"
+61-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:81:2-26
+62            android:grantUriPermissions="true" >
+62-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:82:2-36
+63            <meta-data
+63-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:83:2-85:50
+64                android:name="android.support.FILE_PROVIDER_PATHS"
+64-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:84:3-53
+65                android:resource="@xml/android_camera_paths" />
+65-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:85:3-47
+66        </provider>
+67
+68        <activity
+68-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:87:9-124
+69            android:name="com.fuse.qreader.BarcodeCaptureActivity"
+69-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:87:19-73
+70            android:theme="@style/Theme.AppCompat" />
+70-->/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/AndroidManifest.xml:87:74-112
+71        <activity
+71-->[com.google.android.gms:play-services-base:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/9dfbba0d19c6d78f6f3b80bcbabd668b/play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+72            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+72-->[com.google.android.gms:play-services-base:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/9dfbba0d19c6d78f6f3b80bcbabd668b/play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+73            android:exported="false"
+73-->[com.google.android.gms:play-services-base:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/9dfbba0d19c6d78f6f3b80bcbabd668b/play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+74            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+74-->[com.google.android.gms:play-services-base:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/9dfbba0d19c6d78f6f3b80bcbabd668b/play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+75
+76        <meta-data
+76-->[com.google.android.gms:play-services-basement:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/24740dd5859002307fe0385a67bc92b9/play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
+77            android:name="com.google.android.gms.version"
+77-->[com.google.android.gms:play-services-basement:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/24740dd5859002307fe0385a67bc92b9/play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
+78            android:value="@integer/google_play_services_version" />
+78-->[com.google.android.gms:play-services-basement:16.0.1] /Users/jay/.gradle/caches/transforms-2/files-2.1/24740dd5859002307fe0385a67bc92b9/play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
+79    </application>
+80
+81</manifest>

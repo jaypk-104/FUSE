@@ -1,0 +1,15 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Charting controls and behaviors",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Charting",
+  "Packages": [
+    "Fuse",
+  ],
+  "InternalsVisibleTo": [
+	"Fuse.Charting.Test",
+  ],
+  "Includes": [
+    "**.uno:Source"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native Storage",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+      "Fuse.FileSystem.Test"
+  ],
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Collections"
+  ],
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj"
+  ],
+  "Includes": [
+    "*.uno:Source",
+    "System/*.uno:Source",
+    "System/IO/*.uno:Source",
+    "Uno/IO/*.uno:Source"
+  ]
+}

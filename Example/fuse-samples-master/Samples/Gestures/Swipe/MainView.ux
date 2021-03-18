@@ -1,0 +1,52 @@
+<App Background="0.7,0.7,0.7,1">
+	<Text ux:Class="Label" Alignment="Center" FontSize="20" TextWrapping="Wrap"/>
+
+	<JavaScript File="main.js"/>
+
+	<!-- only two images are used to reduce the sample's size -->
+	<FileImageSource File="bird0.jpg" ux:Key="bird0"/>
+	<FileImageSource File="bird1.jpg" ux:Key="bird1"/>
+
+	<ClientPanel>
+		<ScrollView>
+			<StackPanel ItemSpacing="2" Margin="2">
+				<Each Items="{items}">
+					<Panel>
+						<StackPanel Orientation="Horizontal" ux:Name="TheItem">
+							<SolidColor Color="1,1,1,1" ux:Name="BackFill"/>
+							<Rectangle Width="100" Height="75" Margin="2" CornerRadius="5">
+								<ImageFill Source="{DataToResource image}" StretchMode="UniformToFill"
+									Color="{tintColor}"/>
+							</Rectangle>
+							<Label Value="{name}" Alignment="VerticalCenter" Margin="5" Color="0,0,0,1"/>
+						</StackPanel>
+
+						<Panel Alignment="Right" Background="0.5,0.1,0.1,1" Clicked="{deleteItem}"
+							ux:Name="DeleteNode">
+							<StackPanel Alignment="Center">
+								<Image File="cancel.png" Color="1,1,1,1" StretchMode="PixelPrecise"/>
+								<Label Margin="20,0,20,0" Alignment="Center" Value="Delete" Color="1,1,1,1"/>
+							</StackPanel>
+						</Panel>
+						<SwipeGesture Direction="Left" LengthNode="DeleteNode" ux:Name="DeleteSwipe" Type="Active"/>
+						<SwipingAnimation Source="DeleteSwipe">
+							<Move Target="TheItem" X="-1" RelativeTo="Size" RelativeNode="DeleteNode"/>
+						</SwipingAnimation>
+						<Swiped Source="DeleteSwipe" How="ToInactive">
+							<Change BackFill.Color="0.9,1,0.9,1" Duration="0.2"/>
+						</Swiped>
+
+
+						<LayoutAnimation>
+							<Move RelativeTo="PositionChange" Vector="1" Duration="0.25"/>
+						</LayoutAnimation>
+						<RemovingAnimation>
+							<Change TheItem.Opacity="0" Duration="0.15"/>
+							<Scale Factor="0.8" Duration="0.15"/>
+						</RemovingAnimation>
+					</Panel>
+				</Each>
+			</StackPanel>
+		</ScrollView>
+	</ClientPanel>
+</App>

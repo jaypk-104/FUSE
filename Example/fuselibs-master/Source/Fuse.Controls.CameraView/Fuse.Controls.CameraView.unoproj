@@ -1,0 +1,28 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Controls.CameraView",
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse/Fuse.unoproj",
+    "../FuseJS/FuseJS.unoproj",
+    "../Fuse.ImageTools/Fuse.ImageTools.unoproj",
+  ],
+  "Includes": [
+    "*",
+    "iOS/CameraPreview.h:ObjCHeader:iOS",
+    "iOS/CameraPreview.m:ObjCSource:iOS",
+    "iOS/CameraViewImpl.h:ObjCHeader:iOS",
+    "iOS/CameraViewImpl.mm:ObjCSource:iOS",
+    "iOS/RecordingSession.h:ObjCHeader:iOS",
+    "iOS/RecordingSession.mm:ObjCSource:iOS",
+    "Android/CameraImpl.java:Java:Android",
+    "Android/IPictureCallback.java:Java:Android",
+    "Android/RecordingSession.java:Java:Android",
+    "Android/IStartRecordingSession.java:Java:Android",
+    "Android/IStopRecordingSession.java:Java:Android"
+  ]
+}

@@ -1,0 +1,72 @@
+<Page ux:Class="MonthView" Remove="None">
+	<!-- You cannot use Activated="{activated}" on the `Page` itself due to JavaScript scope rules -->
+	<Activated Handler="{activated}" />
+	
+	<Router ux:Dependency="router" />
+	<JavaScript File="MonthView.js" />
+
+	<Rectangle Color="#FFF0" Visibility="Hidden" ux:Name="blockView" />
+	
+	<DockPanel Color="#ffffff" Padding="5">
+		<Text Value="{temp_ios_date}" Dock="Top" ux:Name="here" Visibility="Hidden"/>
+
+		<Grid Dock="Top" Columns="auto,1*,auto" CellSpacing="5" Margin="0,0,0,5">
+			<Panel Color="#ffffff" Width="35" Height="35">
+				<Image File="Assets/arrowleft.png" Color="#5C47BE" />
+				<Clicked>
+					<RouterModify Bookmark="prevMonth" Style="fromLeft" />
+				</Clicked>
+			</Panel> 
+			<Panel Color="#ffffff">
+				<Text FontSize="20" Color="#000000DD" Value="{monthLabel}" TextAlignment="Center" Alignment="VerticalCenter" Font="AGOTHIC14" />
+			</Panel>
+			<Panel Color="#ffffff" Width="35" Height="35">
+				<Image File="Assets/arrowright.png" Color="#5C47BE" />
+				<Clicked>
+					<RouterModify Bookmark="nextMonth" Style="fromRight" />
+				</Clicked>
+			</Panel>
+		</Grid>
+	
+		<Grid ColumnCount="7" CellSpacing="3" DefaultRow="1*" Rows="auto">
+			<Each Items="{daysOfWeek}">
+				<Panel Color="#ffffff">
+					<Text FontSize="15" Value="{data()}" TextAlignment="Center" Color="#00000088" Font="AGOTHIC14" />
+				</Panel>
+			</Each>
+			<Each Items="{days}" MatchKey="type">
+				<Rectangle Color="#e8eaf6" ux:Template="fill" />
+				<Rectangle Color="#ffffff" ux:Template="day" Clicked="{openDay}">
+					<Text FontSize="16" Color="#222" Alignment="TopLeft" Value="{dayOfMonth}" Margin="5" Font="AGOTHIC14" />
+					<Stroke Width="1" Color="#7986cb88" />
+					<Clicked>
+						<Set Target="here.Value" Value="{monthLabel+dayOfMonth}" /> 
+					</Clicked>
+				</Rectangle>
+			</Each>
+		</Grid>
+	</DockPanel>
+	
+	<Transition Style="fromLeft" Direction="ToActive">
+		<Move X="-1" RelativeTo="ParentSize" Duration="0.4" Easing="SinusoidalInOut" />
+	</Transition>
+	<Transition Style="fromRight" Direction="ToActive">
+		<Move X="1" RelativeTo="ParentSize" Duration="0.4" Easing="SinusoidalInOut" />
+	</Transition>
+	
+	<Transition Style="fromRight" Direction="ToInactive">
+		<Move X="-1" RelativeTo="ParentSize" Duration="0.4" Easing="SinusoidalInOut" />
+	</Transition>
+	<Transition Style="fromLeft" Direction="ToInactive">
+		<Move X="1" RelativeTo="ParentSize" Duration="0.4" Easing="SinusoidalInOut" />
+	</Transition>
+	
+	<Transition To="day">
+		<Change blockView.Color="#4448" Duration="0.4" />
+		<Change blockView.Visibility="Visible" />
+	</Transition>
+	
+	<Transition>
+		<Move Y="1" RelativeTo="ParentSize" />
+	</Transition>
+</Page>

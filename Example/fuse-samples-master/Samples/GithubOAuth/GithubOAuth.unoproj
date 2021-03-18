@@ -1,0 +1,15 @@
+{
+  "Mobile": {
+    "UriScheme": "fusegithub"
+  },
+  "RootNamespace": "",
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.Launcher.InterApp"
+  ],
+  "Includes": [
+    "*",
+    "Auth.js:Bundle"
+  ]
+}

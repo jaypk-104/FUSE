@@ -1,0 +1,37 @@
+<App Background="#FFF">
+	<ClientPanel>
+		<Grid ColumnCount="2">
+
+			<NumberEntry Alignment="Center" />
+			
+			<!-- an example of reusing the NumberPad component -->
+			<StackPanel Padding="5" ItemSpacing="5" Color="#AAA" Alignment="Center">
+				<JavaScript>
+					var Observable = require("FuseJS/Observable");
+					var current = Observable(" ");
+					
+					function selected(args) {
+						current.value = args.number;
+						oneShot.pulseBackward();
+					};
+
+					module.exports = {
+						current: current,
+						selected: selected
+					};
+				</JavaScript>
+				<Panel Padding="5">
+					<Rectangle Layer="Background" Color="#FFF" CornerRadius="50" />
+					<Text ux:Name="oneShotText" TextAlignment="Center" FontSize="80" Value="{current}" Opacity="0" />
+					<Timeline ux:Name="oneShot">
+						<Change oneShotText.Opacity="1" Duration="0.7"/>
+					</Timeline>
+				</Panel>
+				
+				<NumberPad>
+					<NumberSelected Handler="{selected}"/>
+				</NumberPad>
+			</StackPanel>
+		</Grid>
+	</ClientPanel>
+</App>

@@ -1,0 +1,15 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native alerts and simple dialogs for mobile targets",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Collections",
+    "Uno.Threading"
+  ],
+  "Projects": [
+    "../Fuse.Scripting/Fuse.Scripting.unoproj"
+  ],
+  "Includes": [
+    "*"
+  ]
+}

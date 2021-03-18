@@ -1,0 +1,19 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native TimePicker",
+  "Publisher": "Fuse Open",
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Controls/Fuse.Controls.unoproj",
+    "../Fuse.Controls.Native/Fuse.Controls.Native.unoproj",
+    "../Fuse.Controls.Panels/Fuse.Controls.Panels.unoproj",
+    "../Fuse.Controls.Primitives/Fuse.Controls.Primitives.unoproj",
+    "../Fuse.Drawing/Fuse.Drawing.unoproj",
+    "../Fuse.Elements/Fuse.Elements.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+  ],
+  "Includes": [
+    "*"
+  ]
+}

@@ -1,0 +1,37 @@
+<App>
+	<ClientPanel Color="#888">
+		<Panel ux:Name="fullScreen"/>
+		<ResourceObject Key="fullScreen" Value="fullScreen"/>
+
+		<ScrollView>
+			<DockPanel Margin="10">
+				<Panel>
+					<ColumnLayout ColumnSize="300" ItemSpacing="10" ColumnSpacing="10" Sizing="Fill"/>
+
+					<BarChart/>
+					<QuarterGroups/>
+					<ScatterPlot/>
+					<FullBarChart/>
+					<PieChart/>
+					<VertLine/>
+					<VertRanges/>
+					<DoubleBarChart/>
+					<MixHorzLine/>
+					<NegHorzLine/>
+					<MixedBarChart/>
+					<SpiderChart/>
+					<HorzLine/>
+					<GroupLine/>
+					<!-- https://github.com/fusetools/Fuse/issues/3812 -->
+					<!-- <StackedBarChart/> -->
+				</Panel>
+				
+				<Panel Dock="Top" Margin="0,0,0,10" Padding="6,3">
+					<Rectangle Layer="Background" CornerRadius="5" Color="#FFF"/>
+					<Text Value="Click on the title bars to expand example.  Click on the ✧ to generate new data."
+						Color="#000"/>
+				</Panel>
+			</DockPanel>
+		</ScrollView>
+	</ClientPanel>
+</App>

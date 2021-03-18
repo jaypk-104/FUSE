@@ -1,0 +1,15 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Allows marshalling and arithmetic between boxed value types",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Collections",
+    "UnoCore"
+  ],
+  "Projects": [
+  	"../Fuse.Common/Fuse.Common.unoproj"
+  ],
+  "Includes": [
+    "*"
+  ]
+}

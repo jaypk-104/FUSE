@@ -1,0 +1,88 @@
+<Panel ux:Class="Confirm" ux:Name="root">
+	<Panel Margin="0,0,0,0" Opacity="0" ux:Name="AddToBasketPanel" HitTestMode="None">
+		<DockPanel Alignment="Default" Padding="0, 10, 0, 0">
+			<Rectangle ux:Name="addTaskButtons" Layer="Background" Margin="0,0,0,0" Dock="Top">
+				<Tapped>
+					<Set root.Show="False" />
+				</Tapped>
+			</Rectangle>
+			<Text ux:Name="text" Value="{Property root.Text}" Alignment="Center" Color="White" TextWrapping="Wrap" FontSize="25" Font="AGOTHIC14" Dock="Top" />
+			<Rectangle ux:Class="SelectableRectangle" Width="20" Height="20" CornerRadius="2" Color="{Property SelectionColor}" Dock="Top">
+			        <string ux:Property="ID" />
+			        <float4 ux:Property="SelectionColor" />
+			        <Text Color="#C2C2C2FE" />
+			
+			        <Selectable Value="{ReadProperty ID}"  ux:Name="add1"/>
+			
+			        <WhileSelected>
+			            <Scale Factor="1.3" Duration="0.5" Easing="BackOut" EasingBack="BackIn" />
+			            <Change Value="#75AE30" Duration="0.5" Target="this.Color" />       
+			        </WhileSelected>
+			
+			        <Clicked>
+			            <ToggleSelection />
+						<JavaScript>
+							cancel_type = this.ID.value;
+						</JavaScript>
+			        </Clicked>
+
+			    </Rectangle>
+										
+			<DockPanel Margin="0, 20, 0, 0" Dock="Fill" Alignment="Center">
+			        <Rectangle Color="White" CornerRadius="3" Dock="Top" />
+			        <Selection MaxCount="1" MinCount="1" />
+
+			        <WrapPanel Dock="Top" Margin="0, 0, 0, 10">
+			            <SelectableRectangle ID="1" SelectionColor="#adadad" Dock="Top" />
+			            <Text Value="미취급품목" Margin="5, 0, 15, 0" Color="#FFF" />
+						<SelectableRectangle ID="2" SelectionColor="#adadad" Dock="Top" />
+			             <Text Value="스펙정보부족" Margin="5, 0, 15, 0" Color="#FFF" />
+						  <SelectableRectangle ID="3" SelectionColor="#adadad" Dock="Top" />
+			             <Text Value="단종" Margin="5, 0, 0, 0" Color="#FFF" />
+			        </WrapPanel>
+			        <WrapPanel Dock="Top" Margin="0, 0, 0, 10">
+			            <SelectableRectangle ID="4" SelectionColor="#adadad" Dock="Top" />
+			             <Text Value="기타" Margin="5, 0, 0, 0" Color="#FFF" />
+			             <TextInput Margin="10, 0, 0, 0" Width="230" TextColor="#FFFFFF" TextWrapping="Wrap" PlaceholderColor="#F8F8F829" PlaceholderText="_________________________________" Value="{cancel_remark}"/>
+			        </WrapPanel>
+			    </DockPanel>
+			<StackPanel ux:Name="ButtonsPanel" Orientation="Horizontal" Alignment="HorizontalCenter" Dock="Bottom">
+				<Rectangle CornerRadius="20" Margin="10" Width="150" Color="White" Padding="10" Height="40" Fill="#75AE30" Dock="Top">
+					<Text Alignment="Center" Font="AGOTHIC14" Color="White">Yes</Text>
+					<Tapped>
+						<Set root.Show="False" />
+						<RaiseUserEvent EventName="Event_Handler" />
+					</Tapped>
+				</Rectangle>
+				<Rectangle CornerRadius="20" Margin="10" Width="150" Color="White" Padding="10" Height="40" Fill="#F58F87">
+					<Text Alignment="Center" Font="AGOTHIC14" Color="White">No</Text>
+					<Tapped>
+						<Set root.Show="False" />
+					</Tapped>
+				</Rectangle>
+				<WhileTrue ux:Name="show" Value="{Property root.Show}">
+							<Change text.Offset="0,0" Duration="0.2" Delay="0.2" DelayBack="0" Easing="CubicOut" />
+				
+							<Change addTaskButtons.Color="#000d" Duration="0.15" DelayBack="0.25" />
+				
+							<Change ButtonsPanel.Offset="0,0" Duration="0.30" Delay="0" Easing="QuinticInOut" />
+				
+							<Change AddToBasketPanel.HitTestMode="Children" />
+							<Change AddToBasketPanel.Opacity="1" Duration="0.5" Easing="QuinticOut" />
+						</WhileTrue>
+			</StackPanel>
+		</DockPanel>
+
+
+    
+
+
+
+	</Panel>
+
+	<bool ux:Property="Show" />
+	<UserEvent ux:Name="Event_Handler" />
+	<OnUserEvent ux:Class="Handler" EventName="Event_Handler" />
+	<object ux:Property="Handler" />
+	<string ux:Property="Text" />
+</Panel>

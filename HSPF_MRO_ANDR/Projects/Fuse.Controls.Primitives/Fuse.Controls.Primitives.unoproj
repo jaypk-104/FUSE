@@ -1,0 +1,51 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Primitives",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+    "Fuse.Android",
+    "Fuse.Views",
+    "Fuse.Android.TextRenderer",
+    "Fuse.iOS.TextRenderer",
+    "Fuse.Gestures",
+    "Fuse.Controls.Primitives.Test",
+    "Fuse.Controls.Test",
+    "Fuse.Elements.Test",
+    "Fuse.iOS",
+    "Fuse.iOS.Bindings",
+  ],
+  "Packages": [
+    "Uno.Graphics.Utils",
+    "Uno.Threading"
+  ],
+  "Projects": [
+    "../Fuse.Platform/Fuse.Platform.unoproj",
+    "../Fuse.Animations/Fuse.Animations.unoproj",
+    "../Fuse.Controls.Native/Fuse.Controls.Native.unoproj",
+    "../Fuse.Controls.Panels/Fuse.Controls.Panels.unoproj",
+    "../Fuse.Controls/Fuse.Controls.unoproj",
+    "../Fuse.Drawing.Surface/Fuse.Drawing.Surface.unoproj",
+    "../Fuse.Drawing.Planar/Fuse.Drawing.Planar.unoproj",
+    "../Fuse.Drawing.Primitives/Fuse.Drawing.Primitives.unoproj",
+    "../Fuse.Drawing/Fuse.Drawing.unoproj",
+    "../Fuse.Effects/Fuse.Effects.unoproj",
+    "../Fuse.Elements/Fuse.Elements.unoproj",
+    "../Fuse.Gestures/Fuse.Gestures.unoproj",
+    "../Fuse.Motion/Fuse.Motion.unoproj",
+    "../Fuse.Navigation/Fuse.Navigation.unoproj",
+    "../Fuse.Reactive.Bindings/Fuse.Reactive.Bindings.unoproj",
+    "../Fuse.Reactive.Expressions/Fuse.Reactive.Expressions.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Text/Fuse.Text.unoproj",
+    "../Fuse.Triggers/Fuse.Triggers.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj"
+  ],
+  "Includes": [
+    "*"
+  ],
+  "Excludes": [
+    "Docs"
+  ]
+}

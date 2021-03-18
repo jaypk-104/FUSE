@@ -1,0 +1,20 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Uno Testing Framwork",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+    "Uno.Testing.Test"
+  ],
+  "Includes": [
+    "Attributes/IgnoreAttribute.uno:Source",
+    "Attributes/TestAttribute.uno:Source",
+    "Exceptions/AssertionFailedException.uno:Source",
+    "Exceptions/IgnoreException.uno:Source",
+    "AbstractRunner.uno:Source",
+    "Assert.uno:Source",
+    "NamedTestMethod.uno:Source",
+    "Registry.uno:Source",
+    "RemoteRunner.uno:Source",
+    "TestSetup.uno:Source"
+  ]
+}

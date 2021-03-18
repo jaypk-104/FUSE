@@ -1,0 +1,10 @@
+{
+  "InternalsVisibleTo": [],
+  "Packages": [
+	"Fuse",
+  ],
+  "Projects": [],
+  "Includes": [
+	"*"
+  ]
+}

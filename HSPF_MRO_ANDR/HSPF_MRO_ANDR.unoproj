@@ -1,0 +1,87 @@
+{
+  "RootNamespace":"HS",
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.Camera",
+    "Fuse.CameraRoll",
+    "Fuse.ImageTools",
+    "Fuse.Audio",
+    "Fuse.Vibration",
+    "Fuse.Controls.DatePicker",
+    "Fuse.Charting",
+    "Fuse.UXKits.Alive",
+    "Fuse.Alerts",
+    "Fuse.Launcher.InterApp"
+  ], 
+  "Projects": [
+    "Projects/Barcode/fuse-qreader.unoproj",
+    "Projects/NativeControls/NativeControls.unoproj",
+    "Projects/InterApp/Fuse.BackgroundDownload.unoproj",
+  ],
+  "Includes": [
+    "*",
+    "Assets/login/avatar*.png:Bundle",
+    "Pages/Menu_Supplier/SubPage.ux:UXFile",
+    "Pages/Menu_Supplier/SubPage_po.ux:UXFile",
+    "Pages/*.js:Bundle",
+    "Modules/CogWheelReload.ux:UXFile",
+    "Modules/HomeScreen.uno",
+    "Modules/*.js:Bundle",
+    "Modules/CalendarView/*.js:Bundle",
+    "Pages/Menu_Customer/c_inq02/*.js:Bundle",
+    //"setting.uxl",
+  ],
+  "Mobile": {
+    "ShowStatusbar": true,
+  },
+  "iOS": {
+		"BundleIdentifier": "com.hsmro.hsn",
+    "Version": "1.0.5",
+    "DeploymentTarget": "11.0",
+    "Icons": {
+			"iPhone_20_2x": "icon/ios/AppIcon.appiconset/Icon-App-20x20@2x.png",
+			"iPhone_20_3x": "icon/ios/AppIcon.appiconset/Icon-App-20x20@3x.png",
+			"iPhone_29_2x": "icon/ios/AppIcon.appiconset/Icon-App-29x29@2x.png",
+			"iPhone_29_3x": "icon/ios/AppIcon.appiconset/Icon-App-29x29@3x.png",
+			"iPhone_40_2x": "icon/ios/AppIcon.appiconset/Icon-App-40x40@2x.png",
+			"iPhone_40_3x": "icon/ios/AppIcon.appiconset/Icon-App-40x40@3x.png",
+			"iPhone_60_2x": "icon/ios/AppIcon.appiconset/Icon-App-60x60@2x.png",
+			"iPhone_60_3x": "icon/ios/AppIcon.appiconset/Icon-App-60x60@3x.png",
+			"iOS-Marketing_1024_1x": "icon/ios/AppIcon.appiconset/ItunesArtwork@2x.png"
+    }
+	},
+  "Android": {
+    "Icons": {
+                "LDPI": "icon/android/mipmap-ldpi/ic_launcher.png",
+                "MDPI": "icon/android/mipmap-mdpi/ic_launcher.png",
+                "HDPI": "icon/android/mipmap-hdpi/ic_launcher.png",
+                "XHDPI": "icon/android/mipmap-xhdpi/ic_launcher.png",
+                "XXHDPI": "icon/android/mipmap-xxhdpi/ic_launcher.png",
+                "XXXHDPI": "icon/android/mipmap-xxxhdpi/ic_launcher.png"
+            },
+    "SDK": {
+	   "BuildToolsVersion": "29.0.2", 
+	   "CompileVersion": 29,
+	   "MinVersion": 21,
+	   "TargetVersion": 29
+	  },
+    "Key": {
+			"Alias": "application",
+			"AliasPassword": "hsnetw11",
+			"Store": "release.keystore",
+			"StorePassword": "hsnetw11"
+		},
+   
+  },
+  /*
+  "externalNativeBuild": { 
+    "cmake" : { 
+        "version": "3.6.4"
+    } 
+  },
+  */
+  "Name" : "HS MRO",
+  "VersionCode" : "12",
+  "VersionName" : "1.2.0",
+}

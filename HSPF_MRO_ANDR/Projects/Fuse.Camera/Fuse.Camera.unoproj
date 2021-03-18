@@ -1,0 +1,25 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native Camera support",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Camera",
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "IsTransitive": true,
+  "Projects": [
+    "../Android.ActivityUtils/Android.ActivityUtils.unoproj",
+    "../Fuse.ImageTools/Fuse.ImageTools.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "Android/*",
+    "iOS/*",
+    "Desktop/*",
+    "iOS/CameraHelper.h:CHeader:iOS",
+    "iOS/CameraHelper.m:CSource:iOS",
+  ]
+}

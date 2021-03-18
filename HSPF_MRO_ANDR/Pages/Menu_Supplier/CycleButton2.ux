@@ -1,0 +1,135 @@
+<Rectangle ux:Class="CycleButton2" Padding="4" StrokeColor="#e0e0e0" StrokeWidth="2" Color="White" CornerRadius="2">
+    <object ux:Property="Types" />
+    <int ux:Property="CurrentType" />
+
+    <JavaScript>
+        var Observable = require("FuseJS/Observable");
+        var types = this.Types;
+        var currentType = this.CurrentType;
+        var textColor = Observable("#f58f87");
+
+        var currentTypeLabel = currentType.combineLatest(types, function(idx, list) {
+            return list[idx].label;
+        });
+
+        function nextState() {
+            currentType.value = (currentType.value + 1) % types.value.length;
+
+            console.log('HERE1:' + (JSON.stringify(types.value) + '').indexOf('단가합의대상')); //097A60E0 56CCB4
+            console.log('HERE2:' + currentType.value); //097A60E0 56CCB4
+
+            if((JSON.stringify(types.value) + '').indexOf('결재할문서') > -1) {
+                
+                console.log('발주결재용싸이클');
+                console.log(currentType.value)
+                if(currentType.value == 1-1) {
+                    textColor.value = "#efb134";
+                } else if(currentType.value == 2-1) {
+                    textColor.value = "#efb134";
+                } else if(currentType.value == 3-1) {
+                    textColor.value = "#F78DB9";
+                } else if(currentType.value == 4-1) {
+                    textColor.value = "#70B988";
+                } else if(currentType.value == 5-1) {
+                    textColor.value = "#0000005F";
+                } else if(currentType.value == 6-1) {
+                    textColor.value = "#70a0e0";
+                } else {
+                    textColor.value = "#0000005F";
+                }
+            }
+            else if((JSON.stringify(types.value) + '').indexOf('견적접수') > -1) {
+                
+                console.log('견적결재용싸이클');
+                if(currentType.value == 1-1) {
+                    textColor.value = "#F78DB9";
+                } else if(currentType.value == 2-1) {
+                    textColor.value = "#F78DB9";
+                } else if(currentType.value == 3-1) {
+                    textColor.value = "#70B988";
+                } else if(currentType.value == 4-1) {
+                    textColor.value = "#efb134";
+                } else if(currentType.value == 5-1) {
+                    textColor.value = "#0000005F";
+                } else if(currentType.value == 6-1) {
+                    textColor.value = "#70a0e0";
+                } else {
+                    textColor.value = "#0000005F";
+                }
+            } else if((JSON.stringify(types.value) + '').indexOf('단가합의대상') > -1) {
+
+                 console.log('견적단가합의용싸이클');
+                 console.log('@@' + currentType.value);
+                 
+                if(currentType.value == 1) {
+                    textColor.value = "#70B988";
+                } else if(currentType.value == 2) {
+                    textColor.value = "#F78DB9";
+                } else if(currentType.value == 3) {//84e0a1
+                    textColor.value = "#70a0e0";
+                } else if(currentType.value == 4) {
+                    console.log('재견적진행중');
+                    textColor.value = "#84e0a1"; //37b25e
+                } else if(currentType.value == 5) {
+                    textColor.value = "#efcf8f"; //70a0e0
+                } else if(currentType.value == 6) {
+                    textColor.value = "#efb134"; //d89308
+                } else if(currentType.value == 7) {
+                    textColor.value = "#37b25e";
+                } else if(currentType.value == 8) {
+                    textColor.value = "#d89308";
+                } else {
+                     textColor.value = "#0000005F";
+                }
+
+            } else {
+                if(currentType.value == 1) {
+                    textColor.value = "#F78DB9";
+                } else if(currentType.value == 2) {
+                    textColor.value = "#70B988";
+                } else if(currentType.value == 3) {
+                    textColor.value = "#70a0e0";
+                } else if(currentType.value == 4) {
+                    textColor.value = "#efb134";
+                } else if(currentType.value == 5) {
+                    textColor.value = "#0000005F";
+                } else {
+                    textColor.value = "#f58f87";
+                }
+            }
+
+            
+        }
+
+        module.exports = {
+            nextState: nextState,
+            currentType: currentType,
+            currentTypeLabel: currentTypeLabel,
+            textColor: textColor,
+        }
+    </JavaScript>
+    
+    <Clicked Handler="{nextState}" />
+
+    <WhilePressed>
+        <Scale Factor="0.98" />
+    </WhilePressed>
+
+    <Circle ux:Class="TypeIndicator" IsActive="false" Width="4" BoxSizing="FillAspect" Color="#e0e0e0" >
+        <bool ux:Property="IsActive" />
+        <WhileTrue Value="{Property IsActive}">
+            <Change this.Color="#0000005F" />
+        </WhileTrue>
+    </Circle>
+
+    <DockPanel>
+        <Text Value="{currentTypeLabel}" Alignment="Center" Dock="Fill" Color="{textColor}" Font="AGOTHIC14" />
+        <Panel Margin="8,0,0,0" Width="16" Dock="Right">
+            <StackPanel Alignment="Center" ItemSpacing="2">
+                <Each Items="{ReadProperty Types}">
+                    <TypeIndicator IsActive="index() == {currentType}" />
+                </Each>
+            </StackPanel>
+        </Panel>
+    </DockPanel>
+</Rectangle>

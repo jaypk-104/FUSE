@@ -1,0 +1,27 @@
+os: osx
+language: node_js
+node_js:
+  - 10
+
+env:
+  global:
+    - PATH=node_modules/.bin:$PATH
+    - LOG_TRACE=1
+
+install:
+  - npm install
+
+before_script:
+  - ulimit -c unlimited -S
+
+script:
+  - npm run build
+  - export XCODE_XCCONFIG_FILE=$TRAVIS_BUILD_DIR/.travis.xcconfig
+  - uno build ios Tests/ManualTests/ManualTestingApp/ManualTestingApp.unoproj
+  - unset XCODE_XCCONFIG_FILE
+  - uno test native Source/AllTests.unoproj
+
+after_failure:
+  - for c in $(ls /cores/core.*); do
+      lldb -c $c -o "bt all" -b;
+    done

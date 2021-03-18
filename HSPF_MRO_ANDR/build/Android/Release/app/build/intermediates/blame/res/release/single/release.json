@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/xml_android_camera_paths.xml.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/xml/android_camera_paths.xml"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-xxxhdpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-xxxhdpi/icon.png"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-xhdpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-xhdpi/icon.png"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-ldpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-ldpi/icon.png"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-mdpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-mdpi/icon.png"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-hdpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-hdpi/icon.png"
+    },
+    {
+        "merged": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/res/merged/release/mipmap-xxhdpi_icon.png.flat",
+        "source": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/res/mipmap-xxhdpi/icon.png"
+    }
+]

@@ -1,0 +1,13 @@
+{
+  "InternalsVisibleTo": [],
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.Physics"
+  ],
+  "Projects": [],
+  "Includes": [
+    "*",
+    "Assets/*.jpg:Bundle"
+  ]
+}

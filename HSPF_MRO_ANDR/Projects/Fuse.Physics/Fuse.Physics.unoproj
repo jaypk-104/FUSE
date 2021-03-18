@@ -1,0 +1,20 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Library for physics-based UI Effects",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+    "Fuse.Controls"
+  ],
+  "Projects": [
+    "../Fuse.Animations/Fuse.Animations.unoproj",
+    "../Fuse.Elements/Fuse.Elements.unoproj",
+    "../Fuse.Gestures/Fuse.Gestures.unoproj",
+    "../Fuse.Triggers/Fuse.Triggers.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj"
+  ],
+  "Includes": [
+    "*.uno"
+  ]
+}

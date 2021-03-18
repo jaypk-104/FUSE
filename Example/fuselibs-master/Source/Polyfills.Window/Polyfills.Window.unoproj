@@ -1,0 +1,18 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Browser window polyfill",
+  "Publisher": "Fuse Open",
+  "Projects": [
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Storage/Fuse.Storage.unoproj",
+    "../Fuse.WebSockets/Fuse.WebSockets.unoproj"
+  ],
+  "IsTransitive": true,
+  "Includes": [
+    "js/*:Bundle",
+    "WindowModule.uno:Source"
+  ]
+
+}

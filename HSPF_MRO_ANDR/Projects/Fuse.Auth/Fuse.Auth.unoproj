@@ -1,0 +1,27 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2020",
+  "Description": "Audio playback support",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Auth",
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse/Fuse.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "iOS/SignInHelper.h:ObjCHeader:iOS",
+    "iOS/SignInHelper.mm:ObjCSource:iOS"
+  ],
+  "iOS": {
+    "PList": {
+      "NSFaceIDUsageDescription": "Require access to FaceID for authenticating"
+    },
+    "SystemCapabilities": {
+      "SignInWithApple": true
+    }
+  }
+}
+

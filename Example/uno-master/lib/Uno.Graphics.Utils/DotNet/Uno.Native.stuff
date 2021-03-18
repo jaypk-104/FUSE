@@ -1,0 +1,6 @@
+if DOTNET && HOST_WIN32 {
+    /* 1.44MB */ Uno.Native: "https://www.nuget.org/api/v2/package/uno-asset-importer-win32-x64/1.0.0"
+}
+if DOTNET && HOST_MAC {
+    /* 1.08MB */ Uno.Native: "https://www.nuget.org/api/v2/package/uno-asset-importer-macOS/1.0.0"
+}

@@ -1,0 +1,650 @@
+<Page ux:Class="s_inq01" Height="100%" ux:Name="s_inq01">
+    
+    <JavaScript File="s_inq01.js" />
+    <JavaScript File="s_inq02.js" />
+    <JavaScript File="s_inq03.js" />
+
+    <Router ux:Dependency="router" />
+    
+    <DockPanel Margin="0, 0, 0, 0" Alignment="Top" Height="100%">
+    <WhileTrue ux:Name="img_visible" Value="{img_visible}">
+        <Panel Width="100%" Height="100%" Layer="Overlay" HitTestMode="LocalBoundsAndChildren" Background="Black" Dock="Top">
+         <Button Alignment="BottomCenter" Margin="0, 0, 0, 0" Width="40" Height="40">
+                <Image File="../../Assets/Icons/x.png" Width="30" Height="30" Alignment="TopRight" Margin="0, 0, 0, 50" />
+                <Clicked>
+                    <Set img_visible.Value="false" />
+                    <Set popup1_visible.Value="true" />
+                </Clicked>
+            </Button>
+            <Image Clicked="{imgClick2}" StretchMode="Uniform">
+                <HttpImageSource Url="{img_url}" />
+                <InteractiveTransform ux:Name="imgtransform" ZoomFactor="1" />
+                <PanGesture Target="imgtransform" />
+                <ZoomGesture Target="imgtransform" />
+            </Image>
+            <DoubleTapped>
+                <Set imgtransform.ZoomFactor="1" />
+                <Set imgtransform.Translation="0,0" />
+                <Set imgtransform.Rotation="0" />
+            </DoubleTapped>
+           
+        </Panel>
+    </WhileTrue>
+    <WhileTrue ux:Name="img_visible_sub" Value="{img_visible_sub}">
+        <Panel Width="100%" Layer="Overlay" HitTestMode="LocalBoundsAndChildren" Background="Black" Alignment="Default" Height="100%">
+                <Button Alignment="TopRight" Width="30" Height="30" Margin="0, 20, 10, 0">
+                    <Image File="../../Assets/Icons/x.png" Width="20" Height="20" Alignment="TopRight" Margin="0, 0, 0, 10" />
+                    <Clicked>
+                        <Set img_visible_sub.Value="false" />
+                    </Clicked>
+                </Button>
+                <Image Clicked="{imgClick2}" StretchMode="Uniform">
+                    <HttpImageSource Url="{img_url2}" />
+                    <InteractiveTransform ux:Name="imgtransform_sub" ZoomFactor="1" />
+                    <PanGesture Target="imgtransform_sub" />
+                    <ZoomGesture Target="imgtransform_sub" />
+                </Image>
+                <DoubleTapped>
+                    <Set imgtransform_sub.ZoomFactor="1" />
+                    <Set imgtransform_sub.Translation="0,0" />
+                    <Set imgtransform_sub.Rotation="0" />
+                </DoubleTapped>
+                
+        </Panel>
+        </WhileTrue>
+        <Rectangle Alignment="Default" Opacity="1" Margin="0, 0, 0, 0" Height="100" Padding="0, 10, 0, 0" Dock="Top">
+                <Grid Dock="Left" RowCount="1" ColumnCount="3" Width="160" Alignment="Left" CellSpacing="1" Height="100%" Padding="10, 5, 5, 5" Columns="40,1*, auto" MinWidth="160">
+                    <Image Row="0" Column="0" File="../../Assets/Icons/calendar.png" Width="60" Height="60" Alignment="Center" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                    <Text Value="{g_DATE_DD}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Center" FontSize="40" Padding="0, 0, 0, 0" />
+                    <WrapPanel Orientation="Vertical" Alignment="Center">
+                        <Text Value="{g_DATE_YM}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="15" Alignment="CenterLeft" />
+                        <Text Value="{g_DATE_DAY}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Dock="Right" ColumnCount="2" Alignment="Right" CellSpacing="7" Padding="10, 5, 5, 5" Width="160" Columns="auto, 40" Margin="0, 0, 5, 0" MinWidth="160">
+                    <WrapPanel Orientation="Vertical" Alignment="Center" Margin="0, 0, 0, 0">
+                        <Text Value="{g_BP_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="15" TextAlignment="Right" />
+                        <Text Value="{g_USR_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="13" TextAlignment="Right" />
+                    </WrapPanel>
+                    <Image File="../../Assets/Icons/user.png" Width="60" Height="60" Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                </Grid>
+                <LinearGradient>
+                    <GradientStop Offset="0" Color="#4740b4" />
+                    <GradientStop Offset="1" Color="#8C73C2" />
+                </LinearGradient>
+            </Rectangle>
+        <Panel Dock="Top" Height="50" Margin="0, 0, 0, 0" Padding="0, 0, 0, 5">
+                    <Rectangle ux:Name="indicator" CornerRadius="30" LayoutMaster="p1" Margin="0, 0, 0, 0" Width="100%" ZOffset="0.1" Color="color0" Height="5" Alignment="Bottom" />
+                    <Grid ColumnCount="4" Margin="-30,0" Padding="0, 0, 0, 0">
+                        <Panel ux:Name="p1" Column="0" ColumnSpan="2" />
+                        <Panel ux:Name="p4" Column="2" ColumnSpan="2" />
+                    </Grid>
+        
+                    <Grid ZOffset="1" Margin="-20, 0, -20, 0" Padding="0, 0, 0, 0">
+                        <Column ux:Name="col1" Width="1" WidthMetric="Proportion" />
+                        <Column ux:Name="col2" Width="1" WidthMetric="Proportion" />
+                        <Column ux:Name="col3" Width="1" WidthMetric="Proportion" />
+        
+                        <Text ux:Class="TabHeader" Color="White" Alignment="CenterLeft" Opacity="0" Margin="0, 0, 0, 0" MinWidth="100" />
+                        <Image ux:Class="TabIcon" Width="30" Height="30" />
+        
+                        <Panel HitTestMode="LocalBounds">
+                            <Grid Columns="auto,1*" Margin="40,0" Alignment="Left">
+                                <TabIcon ux:Name="c1" File="../../Assets/dyntab/tab1.png" Color="#848484" />
+                                <TabHeader ux:Name="h1" Value="신규품목견적진행" Font="AGOTHIC14" TextColor="color0" FontSize="14" />
+                            </Grid>
+                            <Clicked>
+                                <Set nav.Active="page1" />
+                            </Clicked>
+                        </Panel>
+                        <Panel HitTestMode="LocalBounds">
+                            <Grid Columns="auto,1*" Margin="30,0" Alignment="Left">
+                                <TabIcon ux:Name="c2" File="../../Assets/dyntab/tab2.png" Color="#848484" />
+                                <TabHeader ux:Name="h2" Value="제출견적진행조회" Font="AGOTHIC14" TextColor="color1" FontSize="14" />
+                            </Grid>
+                            <Clicked>
+                                <Set nav.Active="page2" />
+                            </Clicked>
+                        </Panel>
+
+                        <Panel HitTestMode="LocalBounds">
+                            <Grid Columns="auto,1*" Margin="30,0" Alignment="Left">
+                                <TabIcon ux:Name="c3" File="../../Assets/dyntab/tab3.png" Color="#848484" />
+                                <TabHeader ux:Name="h3" Value="발주현황조회" TextColor="color3" Font="AGOTHIC14" FontSize="14" />
+                            </Grid>
+                            <Clicked>
+                                <Set nav.Active="page3" />
+                            </Clicked>
+                        </Panel>
+
+        
+                    </Grid>
+                </Panel>
+        <PageControl ux:Name="nav" Background="#EFF0F1" Height="100%" Dock="Top" Alignment="Default" Width="100%">
+            <NavigationMotion GotoEasing="BackOut" />
+            <Attractor ux:Name="indicatorColorAttractor" Target="indicator.Color" Value="color0" />
+            <Rectangle ux:Name="bgColor" Layer="Background" Color="color0" Opacity="0.12" Margin="0, 0, 0, 0" Alignment="Default" />
+            <Attractor ux:Name="bgColorAttractor" Target="bgColor.Color" Value="color0" />
+
+            <WhileTrue ux:Name="shrinkIndicatorWidth">
+                <Change indicator.Width="100" Duration="0.25" />
+            </WhileTrue>
+
+            <Panel ux:Class="PagePlaceholder" Margin="8,10,8,0" />
+            <!--Panel ux:Class="PagePlaceholder" Margin="8,10,8,0"/-->
+
+            <Page ux:Name="page1" Width="100%">
+                <!--Page01 시작-->
+                
+                            <WhileActive>
+                                <OnBackButton Handler="{backBtn}"/>
+                            </WhileActive>
+                <DockPanel Height="100%" Alignment="Center" Width="100%" Padding="5, 5, 5, 5">
+                    <PagePlaceholder Dock="Top" />
+                    <WhileActive Threshold="0.5">
+                        <Set shrinkIndicatorWidth.Value="false" />
+                        <Set indicatorColorAttractor.Value="color0" />
+                        <Set bgColorAttractor.Value="#ffffff" />
+                    </WhileActive>
+                    <ActivatingAnimation>
+                        <Change h1.Opacity="1" />
+                        <Change col1.Width="2" />
+                        <Change c1.Color="color0" />
+                    </ActivatingAnimation>
+
+                    <DockPanel Dock="Fill">
+                        <ScrollView Alignment="Default" Dock="Fill" SnapMinTransform="False" Height="89%">
+                                                <DockPanel Alignment="Default">
+                                                     <CogWheelReload Dock="Top" />
+                                                    <!--Button Margin="0, 0, 0, 0" Width="20%" Clicked="{btnTest}" Dock="Top">
+                                <Image Row="1" Column="0" File="../../Assets/icons/send_button.png" Width="50" Height="50" Alignment="Default" Margin="10,0,0,0 " />
+                            </Button-->
+                                                    <WhileTrue Value="{s_inq01_cnt}">
+                                                        <Image File="../../Assets/Icons/none.png" Width="128" Height="128" Alignment="TopCenter" Dock="Fill" />
+                                                    </WhileTrue>
+                        
+                                                    <Each Items="{items}">
+                                                        <!--반복시작-->
+                                                        <Rectangle Height="210" Dock="Top" CornerRadius="10" Color="#FFFFFFE8" Margin="0, 0, 0, 10">
+                                                            <Confirm ux:Name="confirmAbandon" Show="False" Text="견적을 포기하시겠습니까?">
+                                                                <Handler Handler="{abdYesClick}" />
+                                                            </Confirm>
+                                                            <DockPanel Alignment="Default" Padding="15, 5, 5, 5" Width="100%">
+                                                                <DockPanel Alignment="Default" Dock="Top" Margin="0, 0, 0, 0">
+                                                                    <Rectangle Alignment="Default" Dock="Left" Width="60%" />
+                                                                    <Grid ux:Name="menuButtons" Columns="40,1*" Opacity="0">
+                                                                        <DockPanel Alignment="CenterRight" Column="1" HitTestMode="LocalBoundsAndChildren">
+                                                                            <Image File="../../Assets/Icons/refund.png" Dock="Left" Width="16" Color="#75AE30" />
+                                                                            <Text Value="견적포기" Margin="5,0" Color="#75AE30" FontSize="13" Font="AGOTHIC14" />
+                                                                            <Scaling ux:Name="refundScaling" Factor="0.2" />
+                                                                            <Clicked>
+                                                                                <Toggle Target="menuLayout" />
+                                                                                <Set confirmAbandon.Show="True" />
+                                                                            </Clicked>
+                                                                        </DockPanel>
+                                                                        <!--DockPanel Alignment="CenterRight" Margin="5,0,0,0" Column="2" HitTestMode="LocalBoundsAndChildren">
+                                                    <Image File="../../Assets/Icons/share.png" Dock="Left" Width="16" Color="#75AE30" />
+                                                    <Text Value="재견적요청" Margin="5,0" Color="#75AE30" FontSize="13" Font="AGOTHIC14" />
+                                                    <Scaling ux:Name="shareScaling" Factor="0.2" />
+                                                    <Clicked>
+                                                        <Toggle Target="menuLayout" />
+                                                    </Clicked>
+                                                </DockPanel-->
+                                                                    </Grid>
+                                                                    <Panel ux:Name="sp" Alignment="Right">
+                                                                        <LayoutAnimation>
+                                                                            <Move X="1" Duration="0.3" RelativeTo="LayoutChange" Easing="BackIn" />
+                                                                        </LayoutAnimation>
+                                                                        <Panel Width="40" Alignment="Right" HitTestMode="LocalBoundsAndChildren">
+                                                                            <Rectangle ux:Name="dividerRect" Width="1" Height="60%" Color="#ddd" Alignment="Right" Opacity="0" Offset="10,0" />
+                                                                            <Image ux:Name="arrow" File="../../Assets/Icons/arrow.png" Width="16" Opacity="0" />
+                                                                            <Circle Width="20" Height="20" ux:Name="c01" Color="#75AE30" Alignment="Left">
+                                                                                <Scaling ux:Name="circleScale1" Factor="0.25" />
+                                                                            </Circle>
+                                                                            <Circle Width="20" Height="20" ux:Name="c02" Color="#75AE30" Alignment="HorizontalCenter">
+                                                                                <Scaling ux:Name="circleScale2" Factor="0.25" />
+                                                                            </Circle>
+                                                                            <Circle Width="20" Height="20" ux:Name="c03" Color="#75AE30" Alignment="Right">
+                                                                                <Scaling ux:Name="circleScale3" Factor="0.25" />
+                                                                            </Circle>
+                                                                            <Clicked>
+                                                                                <Toggle Target="menuLayout" />
+                                                                            </Clicked>
+                                                                        </Panel>
+                                                                        <WhileTrue ux:Name="menuLayout">
+                                                                            <Change sp.Alignment="Left" DurationBack="0" />
+                                                                            <Change circleScale1.Factor="1" Duration="0.3" DelayBack="0" />
+                                                                            <Change circleScale2.Factor="1" Duration="0.3" DelayBack="0.025" />
+                                                                            <Change circleScale3.Factor="1" Duration="0.3" DelayBack="0.05" />
+                                                                            <Move Target="c01" X="0.5" RelativeTo="Size" Duration=".3" DelayBack="0" />
+                                                                            <Move Target="c03" X="-0.5" RelativeTo="Size" Duration=".3" DelayBack="0" />
+                        
+                                                                            <Change menuButtons.Opacity="1" Duration="0.4" DurationBack=".2" />
+                        
+                                                                            <!--Change Easing="BackOut" shareScaling.Factor="1" Duration="0.5" DelayBack="0.1" DurationBack="0.1" /-->
+                                                                            <Change Easing="BackOut" refundScaling.Factor="1" Duration="0.5" Delay="0.1" DelayBack="0" DurationBack="0.1" />
+                                                                            <Change arrow.Opacity="1" Duration="0.4" DurationBack="0.15" DelayBack="0" />
+                                                                            <Change dividerRect.Opacity="1" Duration="0.2" Delay="0.2" DurationBack="0.15" DelayBack="0" />
+                                                                        </WhileTrue>
+                                                                    </Panel>
+                                                                </DockPanel>
+                                                                <Grid RowCount="6" ColumnCount="2" Dock="Top" Margin="0, 7, 0, 15" Height="100" Rows="1*, 1*,1*,1*,1*,1*" CellSpacing="20" Columns="auto, 1*">
+                                                                    <Text Value="{STATUS_NM} / {INQ_SEQ}차" Dock="Top" Alignment="Default" Font="AGOTHIC14" Margin="0, 0, 0, 5" Opacity="1" FontSize="12" ColumnSpan="2" Color="#8A43C3"/>
+                                                                    <Text Value="{INQ_NO}" Dock="Left" Font="AGOTHIC14" Margin="0, 0, 0, 5" Alignment="Default" />
+                                                                    <Text Value="{ITEM_CD}" Dock="Left" Font="AGOTHIC14" Margin="0, 0, 0, 5" Alignment="Default" />
+                                                                    <Text Value="{ITEM_NM}" Dock="Left" Font="AGOTHIC14" Alignment="Default" ColumnSpan="2" TextWrapping="NoWrap" />
+                                                                    <Text Value="{SPEC}" Dock="Left" Font="AGOTHIC14" Alignment="Default" ColumnSpan="2" TextWrapping="NoWrap" FontSize="12" />
+                                                                    <Text Value="{MAKER}" Dock="Left" Font="AGOTHIC14" Alignment="Default" ColumnSpan="2" TextWrapping="NoWrap" FontSize="12" TextAlignment="Left" />
+                                                                    <WrapPanel Dock="Top" FlowDirection="LeftToRight" ColumnSpan="2">
+                                                                        <Text Value="{INQ_QTY}" Dock="Top" Alignment="Default" Font="AGOTHIC14" Margin="0, 0, 0, 5" Opacity="1">
+                                                                            <SolidColor />
+                                                                        </Text>
+                                                                        <Text Value="{UNIT}" Dock="Left" FontSize="11" Alignment="BottomLeft" TextAlignment="Left" Font="AGOTHIC14" Margin="0, 0, 0, 5" />
+                                                                    </WrapPanel>
+                                                                </Grid>
+                                                                <Text Value="{REMARK}" Dock="Top" Alignment="Default" Font="AGOTHIC14" Color="#0100007B" FontSize="12" TextWrapping="Wrap" />
+                                                                <DockPanel>
+                                                                    <Grid Dock="Left" RowCount="2" ColumnCount="2" Rows="1*, auto" Columns="auto, 1*" Height="45" CellSpacing="15" Margin="0, 0, 0, 0" Width="80%">
+                                                                        <Text Value="견적요청일" FontSize="10" Dock="Top" Alignment="Default" Font="AGOTHIC14" />
+                                                                        <Text Value="회신요청일" FontSize="10" Dock="Top" Font="AGOTHIC14" />
+                        
+                                                                        <Text Value="{INQ_DT}" Dock="Top" Margin="0, 0, 0, 10" Font="AGOTHIC14" />
+                                                                        <Text Value="{END_INQ_DT} {END_INQ_TIME}" Dock="Top" Font="AGOTHIC14" ColumnSpan="2" />
+                                                                    </Grid>
+                                                                    <Button Margin="0, 0, 0, 0" Width="20%" Clicked="{sendBtn}" Dock="Fill" Alignment="Center">
+                                                                        <Image Row="1" Column="0" File="../../Assets/icons/send.png" Width="35" Alignment="Center" Height="35" />
+                                                                    </Button>
+                                                                </DockPanel>
+                        
+                                                            </DockPanel>
+                                                            <Text Value="{INQ_NO}" Dock="Fill" Margin="0, 0, 0, 0" Font="AGOTHIC14" Visibility="Hidden" Alignment="Default" Color="#00000000" Height="0" MinHeight="0" MaxHeight="0" LineSpacing="0" />
+                                                            <Text Value="{INQ_SEQ}" Dock="Fill" Margin="0, 0, 0, 0" Font="AGOTHIC14" Visibility="Hidden" Opacity="1" Alignment="Default" Color="#00000000" Height="0" MinHeight="0" MaxHeight="0" LineSpacing="0" />
+                                                            <Text Value="{IDX}" Dock="Fill" Margin="0, 0, 0, 0" Font="AGOTHIC14" Visibility="Hidden" Opacity="1" Alignment="Default" Color="#00000000" Height="0" MinHeight="0" MaxHeight="0" LineSpacing="0" />
+                        
+                                                            <Stroke Width="1" Color="#00000027" />
+                        
+                                                        </Rectangle>
+                                                        <LayoutAnimation>
+                                                            <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                                        </LayoutAnimation>
+                        
+                                                        <AddingAnimation>
+                                                            <Move RelativeTo="Size" X="1" Duration="0.3" Easing="CircularIn" />
+                                                        </AddingAnimation>
+                        
+                                                        <RemovingAnimation>
+                                                            <Move RelativeTo="Size" X="-1" Duration="0.4" Easing="CircularOut" />
+                                                        </RemovingAnimation>
+                                                        <!--반복끝-->
+                                                    </Each>
+                                                    <Rectangle Height="100" Alignment="Default" Dock="Top" Opacity="1" />
+                        
+                                                </DockPanel>
+                                            </ScrollView>
+                                            
+                    </DockPanel>
+                    
+                    
+                    <!-- 신규견적제출 -->
+                   <!--WhileTrue Value="{loading_visible}">
+                        <Busy ux:Name="isBusy" IsActive="false" />
+                        <WhileBusy>
+                            <Change loadingPanel.Opacity="1" Duration=".4" />
+                        </WhileBusy>
+                        <MyLoadingIndicator ux:Name="loadingPanel" Opacity="0" Layer="Overlay" ThemeColor="#6CBFD1D3" />
+                        <Panel ux:Class="MyLoadingIndicator" ThemeColor="#1565C0" Height="100%" Width="100%" Background="#C1C0C0BB" Layer="Overlay">
+                            <float4 ux:Property="ThemeColor" />
+                            <Circle ux:Name="rotatingStroke" Width="50" Height="50" StartAngleDegrees="-45" EndAngleDegrees="45">
+                                <Stroke Width="2" Color="{ReadProperty ThemeColor}" />
+                            </Circle>
+                            <Circle Color="{ReadProperty ThemeColor}" Width="20" Height="20">
+                                <Timeline ux:Name="myTimeline">
+                                    <Scale Factor=".5" Duration=".25" Easing="CircularOut" EasingBack="CircularIn" />
+                                    <Scale Factor="2" Duration=".25" Delay=".25" Easing="BounceOut" EasingBack="BounceIn" />
+                                </Timeline>
+                            </Circle>
+                            <WhileFalse>
+                                <Cycle Target="myTimeline.TargetProgress" Low="0" High="1" Frequency=".5" />
+                                <Spin Target="rotatingStroke" Frequency="1" />
+                            </WhileFalse>
+                        </Panel>
+                    </WhileTrue-->
+                    
+                    <!-- 견적제출팝업 -->
+                    <WhileTrue ux:Name="popup1_visible" Value="{popup1_visible}">
+                    <Rectangle ux:Name="popup" Width="100%" Height="100%" Color="#C1C0C0BB" Layer="Overlay" CornerRadius="8" Margin="0, 0, 0, 0" Dock="Top" Alignment="Default">
+                        <DockPanel Color="White" Width="70%" Layer="Overlay" Alignment="Center" Offset="0, -50">
+                            <Rectangle Dock="Top" Height="50" Color="#79B92A7E" Opacity="1" Padding="5, 5, 5, 5" Margin="0, 0, 0, 15">
+                                <Image File="../../Assets/icons/send_pop.png" Padding="0, 0, 0, 0" Alignment="HorizontalCenter" />
+                                <Button Alignment="TopRight" Clicked="{cancelBtn}" Width="30" Height="30">
+                                    <Image File="../../Assets/Icons/x.png" Width="20" Height="20" />
+                                </Button>
+                                <LinearGradient>
+                                    <GradientStop Offset="0" Color="#ADDDAB" />
+                                    <GradientStop Offset="1" Color="#6CBFD1D3" />
+                                </LinearGradient>
+                            </Rectangle>
+                            <DockPanel Dock="Top" Margin="15, 0, 0, 0" Height="40">
+                                <Rectangle Dock="Left" Width="3" Color="#89cbbe" Background="#89cbbe" Margin="0, 0, 4, 0" Alignment="Left" />
+                                <Grid RowCount="2" ColumnCount="2" Columns="auto" CellSpacing="3" Rows="auto, 1*" Height="100%" Dock="Left" Width="80%" Alignment="CenterLeft">
+                                    <Text Row="0" Column="0" FontSize="14" Dock="Top" Color="#292929FE" Font="AGOTHIC14" Value="{POP_ITEM_NM}" Alignment="CenterLeft" ColumnSpan="2" />
+                                    <Text Row="1" Column="0" FontSize="14" Dock="Top" Color="#292929FE" Font="AGOTHIC14" Value="{POP_INQ_QTY}" Alignment="CenterLeft" />
+                                    <Text Row="1" Column="1" FontSize="12" Dock="Left" Color="#292929FE" Font="AGOTHIC14" Value="{POP_UNIT}" Alignment="CenterLeft" />
+                                </Grid>
+                            </DockPanel>
+                            
+                            <Rectangle Height="120" Dock="Top" Padding="0, 0, 0, 0" Margin="15, 15, 15, 15" CornerRadius="8">
+                                <Stroke Width="1" Color="#00000040" />
+                                <DockPanel Padding="10, 10, 10, 10" Height="110">
+                                    <Text Value="견적단가(원)" FontSize="13" Dock="Top" Color="#292929FE" Font="AGOTHIC14" />
+                                    <TextInput Value="{INQ_PRC}" ValueChanged="{changeprc}" Dock="Top" Font="AGOTHIC14" Margin="0, 0, 0, 0" TextAlignment="Right" PlaceholderText="숫자만 입력" PlaceholderColor="#0000002A" InputHint="Number" FontSize="13" Height="30" />
+                                    <Rectangle Height="0.5" Dock="Top" Margin="0, 0, 0, 10" Opacity="0.5">
+                                        <Stroke Width="1" Color="#00000040" />
+                                    </Rectangle>
+                                    <Text Dock="Top" Value="총 견적금액(원)" FontSize="13" Color="#292929FE" TextWrapping="Wrap" Font="AGOTHIC14" />
+                                    <Text Value="{INQ_AMT}" Dock="Top" TextAlignment="Right" Font="AGOTHIC14" FontSize="14" Padding="0, 0, 0, 0" />
+
+                                </DockPanel>
+                            </Rectangle>
+                            
+                            <Rectangle ux:Name="remark" Height="120" Dock="Top" Padding="0, 0, 0, 0" Margin="15, 0, 15, 15" CornerRadius="8" Color="White">
+                                <Stroke Width="1" Color="#00000040" />
+                                <DockPanel Padding="10, 10, 10, 10" Height="110">
+
+                                    <Text Dock="Top" Value="비고" Font="AGOTHIC14" FontSize="12" Color="#292929FE" Margin="0, 0, 0, 0" />
+                                    <TextInput Value="{REMARK_TOAD}" Dock="Top" Font="AGOTHIC14" Margin="0, 0, 0, 0" TextAlignment="Left" PlaceholderText="" PlaceholderColor="#0000002A" FontSize="12" Padding="5, 5, 5, 5" Height="30">
+                                         <WhileFocused>
+                                            <WhileKeyboardVisible>
+                                                <Move Target="popup" Y="-200" Duration=".6" Easing="ExponentialInOut" />
+                                            </WhileKeyboardVisible>
+                                        </WhileFocused>
+                                    
+                                    </TextInput>
+                                    
+                                    <Rectangle Height="0.5" Dock="Top" Margin="0, 0, 0, 10" Opacity="0.5">
+                                        <Stroke Color="#00000040" Width="1" />
+                                    </Rectangle>
+                                    <DockPanel Dock="Top">
+                                        <Text Dock="Left" Value="첨부이미지" Font="AGOTHIC14" FontSize="12" Color="#292929FE" Margin="0, 0, 0, 5" />
+                                        <!--DockPanel Alignment="Default" Dock="Top" Margin="0, 0, 0, 0">
+                                            <Rectangle Alignment="Default" Dock="Left" Width="15%" />
+                                            <Grid ux:Name="menuButtons" Columns="20,1*,1*" Opacity="0" Margin="0, 0, 0, 0">
+                                                <DockPanel Alignment="CenterRight" Column="1" HitTestMode="LocalBoundsAndChildren">
+                                                    <Image File="../../Assets/Icons/camera.png" Dock="Left" Color="#282828CE" Margin="0, 0, 0, 0" StretchSizing="Zero" StretchDirection="Both" StretchMode="Uniform" Width="16" />
+                                                    <Text Value="카메라" Margin="0, 0, 0, 0" Color="#282828CE" FontSize="11" Font="AGOTHIC14" />
+                                                    <Scaling ux:Name="refundScaling" Factor="0.2" />
+                                                    <Clicked Handler="{camBtn}">
+                                                        <Toggle Target="menuLayout" />
+                                                    </Clicked>
+                                                </DockPanel>
+                                                <DockPanel Alignment="CenterRight" Margin="0, 0, 0, 0" Column="2" HitTestMode="LocalBoundsAndChildren">
+                                                    <Image File="../../Assets/Icons/gallery.png" Dock="Left" Width="16" Color="#282828CE" Alignment="Default" />
+                                                    <Text Value="갤러리" Margin="0, 0, 5, 0" Color="#282828CE" FontSize="11" Font="AGOTHIC14" Alignment="Default" />
+                                                    <Scaling ux:Name="shareScaling" Factor="0.2" />
+                                                    <Clicked Handler="{galBtn}">
+                                                        <Toggle Target="menuLayout" />
+                                                    </Clicked>
+                                                </DockPanel>
+                                            </Grid>
+                                            <Panel ux:Name="sp" Alignment="Right">
+                                                <LayoutAnimation>
+                                                    <Move X="1" Duration="0.3" RelativeTo="LayoutChange" Easing="BackIn" />
+                                                </LayoutAnimation>
+                                                <Panel Width="30" Alignment="Right" HitTestMode="LocalBoundsAndChildren">
+                                                    <Rectangle ux:Name="dividerRect" Width="1" Height="60%" Color="#ddd" Alignment="Right" Opacity="0" Offset="10,0" />
+                                                    <Image ux:Name="arrow" File="../../Assets/Icons/arrow.png" Width="13" Opacity="0" />
+                                                    <Circle Width="15" Height="15" ux:Name="c01" Color="#282828CE" Alignment="Left">
+                                                        <Scaling ux:Name="circleScale1" Factor="0.25" />
+                                                    </Circle>
+                                                    <Circle Width="15" Height="15" ux:Name="c02" Color="#282828CE" Alignment="HorizontalCenter">
+                                                        <Scaling ux:Name="circleScale2" Factor="0.25" />
+                                                    </Circle>
+                                                    <Circle Width="15" Height="15" ux:Name="c03" Color="#282828CE" Alignment="Right">
+                                                        <Scaling ux:Name="circleScale3" Factor="0.25" />
+                                                    </Circle>
+                                                    <Clicked>
+                                                        <Toggle Target="menuLayout" />
+                                                    </Clicked>
+                                                </Panel>
+
+                                                <WhileTrue ux:Name="menuLayout">
+                                                    <Change sp.Alignment="Left" DurationBack="0" />
+                                                    <Change circleScale1.Factor="1" Duration="0.3" DelayBack="0" />
+                                                    <Change circleScale2.Factor="1" Duration="0.3" DelayBack="0.025" />
+                                                    <Change circleScale3.Factor="1" Duration="0.3" DelayBack="0.05" />
+                                                    <Move Target="c01" X="0.5" RelativeTo="Size" Duration=".3" DelayBack="0" />
+                                                    <Move Target="c03" X="-0.5" RelativeTo="Size" Duration=".3" DelayBack="0" />
+
+                                                    <Change menuButtons.Opacity="1" Duration="0.4" DurationBack=".2" />
+
+                                                    <Change Easing="BackOut" shareScaling.Factor="1" Duration="0.5" DelayBack="0.1" DurationBack="0.1" />
+                                                    <Change Easing="BackOut" refundScaling.Factor="1" Duration="0.5" Delay="0.1" DelayBack="0" DurationBack="0.1" />
+                                                    <Change arrow.Opacity="1" Duration="0.4" DurationBack="0.15" DelayBack="0" />
+                                                    <Change dividerRect.Opacity="1" Duration="0.2" Delay="0.2" DurationBack="0.15" DelayBack="0" />
+                                                </WhileTrue>
+                                            </Panel>
+                                        </DockPanel-->
+                                    </DockPanel>
+                                        <Each Items="{images}">
+                                            <Text Value="{imgFileName}" Clicked="{imgClick}" Alignment="CenterLeft" Dock="Top" FontSize="12" />
+                                            <Text Value="{imgFilePc}" Alignment="CenterLeft" Dock="Top" FontSize="11" Height="30" Visibility="Hidden" />
+                                        </Each>
+                                        
+                                </DockPanel>
+                            </Rectangle>
+                            <StackPanel Offset="0, 10" Dock="Top" Orientation="Horizontal" Width="100%" Alignment="TopCenter" ItemSpacing="5" Margin="0, 0, 0, 0">
+                                <Button Alignment="Center" Clicked="{okBtn}" Margin="0, 0, 0, 0">
+                                    <Image File="../../Assets/Icons/ok.png" Width="45" Height="45" Layer="Overlay" />
+                                    <Circle Alignment="Center" Layer="Overlay" Opacity="1" Width="45" Height="45">
+                                        <Shadow />
+                                    </Circle>
+                                    <Clicked Handler="{page2Click}" />
+                                </Button>
+                                
+                            </StackPanel>
+                            
+                            <Shadow Color="#00000056" Angle="117" Size="8" Distance="5" />
+                            <!--BottomBarBackground Dock="Bottom" IncludesKeyboard="true" /-->
+                        </DockPanel>
+                   
+                    </Rectangle>
+                    </WhileTrue>
+                    
+                </DockPanel>
+                <!--Page 01 끝-->
+            </Page>
+
+            <Page ux:Name="page2" Width="100%">
+			 <DockPanel Height="100%" Alignment="Center" Width="100%" Padding="5, 5, 5, 5">
+                <WhileActive Threshold="0.5">
+                    <Set shrinkIndicatorWidth.Value="true" />
+                    <Set indicatorColorAttractor.Value="color1" />
+                    <Set bgColorAttractor.Value="#ffffff" />
+                </WhileActive>
+                <ActivatingAnimation>
+					<Change h2.Opacity="1" />
+					<Change col2.Width="2" />
+					<Change c2.Color="color1" />
+				</ActivatingAnimation>
+				
+				<Navigator DefaultPath="inqPage">
+                <Router ux:Name="router_inq" />
+                <Page ux:Template="inqPage">
+                    
+                            <WhileActive>
+                                <OnBackButton Handler="{backBtn}"/>
+                            </WhileActive>
+
+                    <Grid RowCount="1" ColumnCount="2" Width="225" Alignment="TopRight" Margin="0, 0, 5, 0">
+                        <CycleButton2 Width="110" Alignment="TopRight" Types="{types}" CurrentType="{currentType}" Clicked="{typesClick}" Dock="Top" Height="40" />
+                        <CycleButton Width="110" Alignment="TopRight" Modes="{modes}" CurrentMode="{currentMode}" Clicked="{cycleClick}" Dock="Top" Height="40" />
+                    </Grid>
+                    
+                    <ScrollView Height="90%" Alignment="Default" Dock="Top" Margin="0, 10, 0, 0">
+                    <DockPanel Padding="5, 5, 5, 5" Alignment="Default">
+                    <WhileTrue Value="{s_inq02_cnt}">
+                                <Image File="../../Assets/Icons/none.png" Width="128" Height="128" Alignment="TopCenter" Dock="Fill" />
+                            </WhileTrue>
+                    
+                    <Each Items="{items2}">
+                            <Rectangle Height="120" Dock="Top" Color="#FFFFFFE8" Margin="0, 0, 0, 7" CornerRadius="10" Padding="5, 5, 5, 0" Clicked="{clicked}">
+                                <DockPanel>
+                                    <Circle Dock="Left" Width="50" Height="50" Color="{stsCircleColor}" Margin="20, 0, 20, 0" ux:Name="stsCircle">
+                                        <Text Value="{SUPP_STATUS_NM2}" Alignment="Center" Font="AGOTHIC14" FontSize="13" Color="White" />
+                                    </Circle>
+                                    <DockPanel Width="100%" Height="100%" Padding="5, 5, 5, 5" Alignment="Default" Dock="Left">
+                                        <Grid ColumnCount="2" RowCount="2" Dock="Top" Alignment="Top" Columns="100, auto" Rows="auto, auto" DefaultRow="auto" DefaultColumn="150" CellSpacing="3">
+                                            <Text Value="{BP_NM2}" Alignment="CenterLeft" Font="AGOTHIC14" FontSize="13" Margin="0, 0, 0, 0" ColumnSpan="2" />
+                                            <Text Value="{ITEM_CD2}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" Margin="0, 0, 0, 0" />
+                                            <Text Value="{ITEM_NM2}" Font="AGOTHIC14" ColumnSpan="2" FontSize="13" Alignment="Default" Margin="0, 0, 0, 0" TextWrapping="NoWrap" />
+                                        </Grid>
+                                        <Grid ColumnCount="2" RowCount="2" Dock="Top" Alignment="Top" Columns="100, auto" Rows="auto, auto" DefaultRow="auto" DefaultColumn="auto" Margin="0, 10, 0, 0" CellSpacing="2">
+                                            <Text Value="회신요청일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                            <Text Value="견적제출일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                            <Text Value="{INQ_HOPE_DT2}" Font="AGOTHIC14" Alignment="CenterLeft" FontSize="13" />
+                                            <Text Value="{SUPP_INQ_DT2}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                                        </Grid>
+                                        <Grid RowCount="2" ColumnCount="3" Dock="Top" Alignment="Top" Columns="100, 1*, 1*" CellSpacing="3" DefaultRow="auto" DefaultColumn="auto" Rows="auto, auto" Margin="0, 10, 0, 0">
+                                            <WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                <Text Value="수량" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+                                                <Text Value="{INQ_QTY2} {UNIT2}" Font="AGOTHIC14" Dock="Top" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" FontSize="13" />
+                                            </WrapPanel>
+                                            <WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                 <Text Value="견적단가" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Left" />
+                                                <Text Value="{INQ_PRC2} 원" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" />
+                                            </WrapPanel>
+                                            <!--WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                 <Text Value="총 금액" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+                                                <Text Value="{INQ_AMT2} 원" Font="AGOTHIC14" FontSize="13" Alignment="CenterRight" Margin="0, 0, 0, 0" TextAlignment="Right" Width="100" />
+                                            </WrapPanel-->
+                                            
+                                        </Grid>
+                                          <Text Value="{INQ_NO2}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                            <Text Value="{INQ_SEQ2}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                            <Text Value="{INQ_USR_NM}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                    </DockPanel>
+                                </DockPanel>
+                                
+                                <Stroke Width="1" Color="#00000027" />
+                            </Rectangle>
+                            <LayoutAnimation>
+                                <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                            </LayoutAnimation>
+                            <AddingAnimation>
+                                <Move RelativeTo="Size" X="1" Duration="0.3" Easing="ExponentialIn" />
+                            </AddingAnimation>
+                        </Each>
+                        <Rectangle Height="100" Alignment="Default" Dock="Top" Opacity="1" />
+                    </DockPanel>
+                    </ScrollView>
+                </Page>
+                <SubPage ux:Template="subPage" />
+             </Navigator>
+	        </DockPanel>
+            </Page>
+            <Page ux:Name="page3" Width="100%">
+            
+    
+
+            <DockPanel Height="100%" Alignment="Center" Width="100%" Padding="5, 5, 5, 5">
+                <WhileActive Threshold="0.5">
+                    <Set shrinkIndicatorWidth.Value="false" />
+                    <Set indicatorColorAttractor.Value="color3" />
+                    <Set bgColorAttractor.Value="#ffffff" />
+                </WhileActive>
+                <ActivatingAnimation Scale="0.5">
+                    <Move Target="indicator" X="1" RelativeTo="PositionOffset" RelativeNode="p4" />
+                </ActivatingAnimation>
+                <ActivatingAnimation>
+					<Change h3.Opacity="1" />
+					<Change col3.Width="2" />
+					<Change c3.Color="color3" />
+				</ActivatingAnimation>
+
+                <Navigator DefaultPath="poPage">
+                        <Router ux:Name="router_po" />
+                        <Page ux:Template="poPage">
+
+                            <WhileActive>
+                                <OnBackButton Handler="{backBtn}"/>
+                            </WhileActive>
+                        
+                            <Grid RowCount="1" ColumnCount="2" Width="225" Alignment="TopRight" Margin="0, 0, 5, 0">
+                                <CycleButton2 Width="110" Alignment="TopRight" Types="{po_types}" CurrentType="{po_currentType}" Clicked="{poTypesClick}" Dock="Top" Height="40" />
+                                <CycleButton Width="110" Alignment="TopRight" Modes="{modes}" CurrentMode="{po_currentMode}" Clicked="{poCycleClick}" Dock="Top" Height="40" />
+                            </Grid>
+                            
+                            <ScrollView Height="90%" Alignment="Default" Dock="Top" Margin="0, 10, 0, 0">
+                            <DockPanel Padding="5, 5, 5, 5" Alignment="Default">
+                            
+                            <WhileTrue Value="{s_inq03_cnt}">
+                                <Image File="../../Assets/Icons/none.png" Width="128" Height="128" Alignment="TopCenter" Dock="Fill" />
+                            </WhileTrue>
+                            
+                            <!--Button Margin="0, 0, 0, 0" Width="20%" Clicked="{btnTest1}" Dock="Top">
+                                <Image Row="1" Column="0" File="../../Assets/icons/send_button.png" Width="50" Height="50" Alignment="Default" Margin="10,0,0,0 " />
+                            </Button-->
+                            
+                            <Each Items="{items3}">
+                                    <Rectangle Height="120" Dock="Top" Color="#FFFFFFE8" Margin="0, 0, 0, 7" CornerRadius="10" Padding="5, 5, 5, 0" Clicked="{clicked_po}">
+                                        <DockPanel>
+                                            <Circle Dock="Left" Width="50" Height="50" Color="{po_stsCircleColor}" Margin="20, 0, 20, 0" ux:Name="stsCircle">
+                                                <Text Value="{PO_STATUS_NM}" Alignment="Center" Font="AGOTHIC14" FontSize="13" Color="White" TextAlignment="Center" />
+                                            </Circle>
+                                            <DockPanel Width="100%" Height="100%" Padding="5, 5, 5, 5" Alignment="Default" Dock="Left">
+                                                <Grid ColumnCount="2" RowCount="2" Dock="Top" Alignment="Top" Columns="100, auto" Rows="auto, auto" DefaultRow="auto" DefaultColumn="150" CellSpacing="3">
+                                                    <Text Value="{PO_BP_NM}" Alignment="CenterLeft" Font="AGOTHIC14" FontSize="13" Margin="0, 0, 0, 0" ColumnSpan="2" />
+                                                    <Text Value="{PO_ITEM_CD}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" Margin="0, 0, 0, 0" />
+                                                    <Text Value="{PO_ITEM_NM}" Font="AGOTHIC14" ColumnSpan="2" FontSize="13" Alignment="Default" Margin="0, 0, 0, 0" TextWrapping="NoWrap" />
+                                                </Grid>
+                                                <Grid ColumnCount="2" RowCount="2" Dock="Top" Alignment="Top" Columns="100, auto" Rows="auto, auto" DefaultRow="auto" DefaultColumn="auto" Margin="0, 10, 0, 0" CellSpacing="2">
+                                                    <Text Value="발주일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                    <Text Value="납품요청일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                    <Text Value="{PO_DT}" Font="AGOTHIC14" Alignment="CenterLeft" FontSize="13" />
+                                                    <Text Value="{DLVY_HOPE_DT}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                                                </Grid>
+                                                <Grid RowCount="2" ColumnCount="3" Dock="Top" Alignment="Top" Columns="100, 1*, 1*" CellSpacing="3" DefaultRow="auto" DefaultColumn="auto" Rows="auto, auto" Margin="0, 10, 0, 0">
+                                                    <WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                        <Text Value="수량" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+                                                        <Text Value="{PO_QTY} {PO_UNIT}" Font="AGOTHIC14" Dock="Top" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" FontSize="13" />
+                                                    </WrapPanel>
+                                                    <WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                        <Text Value="단가" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Left" />
+                                                        <Text Value="{PO_PRC} 원" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" />
+                                                    </WrapPanel>
+                                                    <!--WrapPanel Dock="Top" FlowDirection="LeftToRight" Alignment="CenterLeft" Orientation="Vertical" Width="100">
+                                                        <Text Value="총 금액" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+                                                        <Text Value="{INQ_AMT2} 원" Font="AGOTHIC14" FontSize="13" Alignment="CenterRight" Margin="0, 0, 0, 0" TextAlignment="Right" Width="100" />
+                                                    </WrapPanel-->
+                                                    
+                                                </Grid>
+                                                <Text Value="{PO_NO}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                                    <Text Value="{PO_SEQ}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                            </DockPanel>
+                                        </DockPanel>
+                                        
+                                        <Stroke Width="1" Color="#00000027" />
+                                    </Rectangle>
+                                    <LayoutAnimation>
+                                        <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                    </LayoutAnimation>
+                                    <AddingAnimation>
+                                        <Move RelativeTo="Size" X="1" Duration="0.3" Easing="ExponentialIn" />
+                                    </AddingAnimation>
+                                </Each>
+                                <Rectangle Height="100" Alignment="Default" Dock="Top" Opacity="1" />
+                            </DockPanel>
+                            </ScrollView>
+                        </Page>
+                        <SubPage_po ux:Template="subPage_po" />
+                    </Navigator>
+                    </DockPanel>
+            </Page>
+
+        </PageControl>
+    </DockPanel>
+
+    <!-- snippet-end -->
+    <!-- snippet-begin:PageControl -->
+
+</Page>

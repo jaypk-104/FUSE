@@ -1,0 +1,191 @@
+<Page ux:Class="SubPage_appr_inq" Height="100%" Padding="5, 0, 5, 0">
+<OnBackButton Handler="{sub_appr_back}"/> 	
+<Router ux:Dependency="router" />
+	<Confirm_msg ux:Name="confirmAbandon1" Show="False" Text="결재하시겠습니까?">
+		<Handler Handler="{abdBtn1Click_inq}" />
+	</Confirm_msg>
+	<Confirm ux:Name="confirmAbandon2" Show="False" Text="결재취소하시겠습니까?">
+		<Handler Handler="{abdBtn2Click_inq}" />
+	</Confirm>
+	<Confirm_return ux:Name="confirmAbandon3" Show="{root_show}" Text="반려하시겠습니까?">
+		<Handler_return Handler="{abdBtn3Click_inq}" />
+	</Confirm_return>
+	<Confirm ux:Name="confirmAbandon4" Show="False" Text="반려취소하시겠습니까?">
+	</Confirm>
+	<DockPanel Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Height="100%" Width="100%">
+        
+        <DockPanel Height="80" Dock="Top" Alignment="Default" Margin="0, 0, 0, -15">
+        	<Button Dock="Left" Alignment="CenterLeft" Width="30" Height="30" Clicked="{btnBackClick_appr_inq}" Margin="10, 7, 0, 0">
+        	    <Image File="../../Assets/Icons/back.png" Alignment="CenterLeft" Height="20" Color="#00000059" />
+        	    <Text TextAlignment="Left" Alignment="Default" Value="BACK" TextWrapping="NoWrap" FontSize="18" Margin="25, 5, 0, 0" Height="25" Color="#00000059" Visibility="Hidden" />
+        	</Button>
+        	<DockPanel Dock="Fill">
+        		<ScrollView Alignment="Default" AllowedScrollDirections="Horizontal" SnapMinTransform="True" SnapMaxTransform="True">
+        			<DockPanel Dock="Right" Alignment="Right" Margin="0, 0, 0, 0" Height="80">
+						<Each Items="{items_appr_line_inq}">
+							<DockPanel Dock="Left" Alignment="Default" Width="70" MinWidth="70" MaxWidth="70" Margin="3, 0, 0, 0">
+								<Rectangle Dock="Top" Padding="3, 3, 3, 3" Margin="0, 0, 0, 0" Width="70" MinWidth="70" MaxWidth="70">
+									<Text Value="(결재)" FontSize="10" Font="AGOTHIC14" />
+									<WhileTrue Value="{ok_flag}">
+										<Image File="../../Assets/Icons/check_appr.png" Alignment="Default" Width="30" Height="30" Color="#46ab18" Dock="Top" Visibility="{ok_flag_visible}" />
+									</WhileTrue>
+									<WhileTrue Value="{return_flag}">
+										<Image File="../../Assets/Icons/return.png" Alignment="Default" Width="30" Height="30" Dock="Top" Visibility="{return_flag_visible}" />
+									</WhileTrue>
+									<Stroke Width="1" Color="#0100005B" />
+								</Rectangle>
+								<Rectangle Dock="Top" Alignment="Default" Margin="0, 3, 0, 0">
+									<Text Value="{USR_NM}" FontSize="12" Font="AGOTHIC14" TextAlignment="Center" />
+								</Rectangle>
+								
+								<Rectangle Dock="Top" Alignment="Default">
+									<Text Value="{JIKGUB}" FontSize="11" Font="AGOTHIC14" TextAlignment="Center" />
+								</Rectangle>
+								<Rectangle Alignment="Default">
+									<Text Value="{APP_DT}" FontSize="12" Font="AGOTHIC14" TextAlignment="Center" />
+								</Rectangle>
+								</DockPanel>
+						</Each>
+					</DockPanel>
+        		</ScrollView>
+        	</DockPanel>
+        </DockPanel>
+        <DockPanel Dock="Fill" Margin="0, 0, 0, 0">
+			<Each Items="{remark_list_inq}">
+								<DockPanel Dock="Top" Background="#D7C0FB" Padding="0, 0, 0, 0" Margin="0, 0, 0, 3">
+									<DockPanel Margin="0, 0, 0, 0" Dock="Top" Padding="0, 0, 0, 0">
+										<DockPanel Alignment="Default" Dock="Fill">
+											<Grid ColumnCount="2" Margin="0, 0, 0, 0" Columns="90, auto" CellSpacing="3" RowCount="1" Rows="auto">
+												<Text Value="{USR_NM} 의견: " FontSize="13" Font="AGOTHIC14" Color="#671B96" />
+												<Text Value="{APP_REMARK}" FontSize="13" Font="AGOTHIC14" TextWrapping="Wrap" Color="#671B96" />
+											</Grid>
+										</DockPanel>
+									</DockPanel>
+									<Rectangle Height="1" Width="100%" Color="#B0B2D7" Dock="Top" />
+								</DockPanel>
+							</Each>
+        	<Rectangle Dock="Top" Height="40%" Padding="7,7,7,7" Background="#EAEBF8">
+        		<ScrollView Padding="0, 0, 0, 0" Dock="Top" Alignment="Default" SnapMinTransform="False">
+        		    <DockPanel Alignment="Default" Height="130%">
+        		        <Grid ColumnCount="2" CellSpacing="7" Columns="80, auto" Alignment="Default" Dock="Top" Rows="auto, auto, auto, auto, auto, auto">
+						<WhileTrue Value="false">
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Font="AGOTHIC14" Value="반려사유" />
+        		            <Text FontSize="13" TextColor="#B7283E" Alignment="Default" Dock="Top" Value="{RETURN_REMARK}" Font="AGOTHIC14" TextAlignment="Left" TextWrapping="Wrap" />
+						</WhileTrue>
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Font="AGOTHIC14" Value="기안자" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{USR_NM}" Font="AGOTHIC14" TextAlignment="Left" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="기안일시" Font="AGOTHIC14" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{APP_DT_H}" Font="AGOTHIC14" TextAlignment="Left" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="제목" Font="AGOTHIC14" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{APP_TITLE}" Font="AGOTHIC14" TextAlignment="Left" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="내용" Font="AGOTHIC14" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Fill" Font="AGOTHIC14" ColumnSpan="2" TextWrapping="Wrap" Layer="Layout" Value="{APP_TEXT}" TextAlignment="Left" />
+							<Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="견적번호" Font="AGOTHIC14" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{APP_INQ_NO}" Font="AGOTHIC14" TextAlignment="Left" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="총 견적금액" Font="AGOTHIC14" />
+        		            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{INQ_AMT} 원" Font="AGOTHIC14" TextAlignment="Left" />
+        		        </Grid>
+        		        
+        		    </DockPanel>
+        		</ScrollView>
+        		<Stroke Width="1" Color="#777AAC" />
+        	</Rectangle>
+        	<Rectangle Dock="Fill" Margin="0, 5, 0, 0">
+        		<DockPanel>
+        			<ScrollView Margin="0, 0, 0, 0" Padding="5, 5, 5, 5" SnapMinTransform="False" SnapMaxTransform="False" Dock="Fill">
+						<StackPanel Width="100%">
+							
+							<Each Items="{items_dtl_inq}">
+								<DockPanel>
+									<DockPanel Margin="0, 0, 0, 0" Dock="Top" Padding="0,3,0,3">
+										<Text Alignment="TopLeft" Value="{ORDER_SEQ})" Width="15" FontSize="10" Dock="Left" Margin="5, 0, 5, 0" Padding="0, 0, 0, 0" />
+										<DockPanel Alignment="Default" Dock="Fill">
+											<Grid ColumnCount="4" Margin="0, 0, 0, 0" Columns="50, 1*, 50, 1*" CellSpacing="3" DefaultRow="auto" RowCount="4" Rows="auto, auto, auto">
+												<!-- <Text Value="견적번호" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{APP_INQ_NO}" FontSize="12" Font="AGOTHIC14"  ColumnSpan="3"/> -->
+												<Text Value="품목코드" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{ITEM_CD}" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="품명" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{ITEM_NM}" TextWrapping="Wrap" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="규격" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{SPEC}" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="제조사" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{MAKER}" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="견적수량" FontSize="12" Font="AGOTHIC14" />
+												<WrapPanel Orientation="Horizontal">
+													<Text Value="{QTY}" FontSize="12" Font="AGOTHIC14" />
+													<Text Value="{UNIT}" FontSize="11" Font="AGOTHIC14" Alignment="BottomLeft" />
+												</WrapPanel>
+												<Text Value="단가" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{PRICE}원" FontSize="12" Font="AGOTHIC14" TextAlignment="Right" Margin="0, 0, 15, 0" />
+												<Text Value="" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="견적금액" FontSize="12" Font="AGOTHIC14" />
+												<Text Value="{AMOUNT}원" FontSize="12" Font="AGOTHIC14" TextAlignment="Right" Margin="0, 0, 15, 0" />
+											</Grid>
+										</DockPanel>
+									</DockPanel>
+									<Rectangle Height="1" Width="100%" Color="#B0B2D7" Dock="Top" />
+								</DockPanel>
+								
+								</Each>
+						</StackPanel>
+					</ScrollView>
+        		</DockPanel>
+        		<Stroke Width="1" Color="#777AAC" />
+        	</Rectangle>
+        </DockPanel>
+        <StackPanel Dock="Bottom" Orientation="Horizontal" Alignment="Center" Height="40" Margin="0, 5, 0, 0" ItemSpacing="5">
+			<WhileTrue Value="{apprBtn1flag}">
+				<Rectangle Color="#A9E1A3" Width="60" Alignment="Default" CornerRadius="10">
+					<Button Dock="Left" Alignment="Default">
+						<Text Value="결 재" Alignment="Center" Font="AGOTHIC14" />
+							<Clicked>
+								<Set confirmAbandon1.Show="True" />
+							</Clicked>
+					</Button>
+				</Rectangle>
+			</WhileTrue>
+			<WhileTrue Value="false">
+				<Rectangle Color="#EEC2CA" Width="60" Alignment="Default" CornerRadius="10">
+					<Button Dock="Left" Alignment="Default">
+						<Text Value="결재취소" Alignment="Center" Font="AGOTHIC14" />
+							<Clicked>
+								<Set confirmAbandon2.Show="True" />
+							</Clicked>
+					</Button>
+				</Rectangle>
+			</WhileTrue>
+			<!--WhileTrue Value = "{apprBtn3flag}"-->
+			<WhileTrue Value="{apprBtn3flag}">
+				<Rectangle Color="#EEC2CA" Width="60" Alignment="Default" CornerRadius="10">
+					<Button Dock="Left" Alignment="Default">
+						<Text Value="반 려" Alignment="Center" Font="AGOTHIC14" />
+							<Clicked>
+								<Set confirmAbandon3.Show="True" />
+							</Clicked>
+					</Button>
+				</Rectangle>
+			</WhileTrue>
+			<WhileTrue Value="false">
+				<Button Dock="Left" Alignment="Default">
+					<Text Value="반려취소" />
+						<Clicked>
+							<Set confirmAbandon4.Show="True" />
+						</Clicked>
+				</Button>
+			</WhileTrue>
+
+        </StackPanel>
+		<Text Dock="Top" TextAlignment="Left" Alignment="Default" Value="{APP_NO}" TextWrapping="NoWrap" FontSize="18" Margin="25, 5, 0, 0" Height="25" Color="#00000059" Visibility="Hidden" />
+	
+    </DockPanel>
+	<JavaScript>
+		exports.title = this.Parameter.map(function(param) {
+			return param.title;
+		});
+	</JavaScript>
+	
+<!-- snippet-end -->
+<!-- snippet-begin:NavBarTitle -->
+</Page>

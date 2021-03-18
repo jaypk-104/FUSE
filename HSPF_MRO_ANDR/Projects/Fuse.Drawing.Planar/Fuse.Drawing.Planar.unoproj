@@ -1,0 +1,13 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Fuse.Drawing",
+  "Publisher": "Fuse Open",
+  "Projects": [
+    "../Fuse.Drawing/Fuse.Drawing.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj"
+  ],
+  "Includes": [
+    "Planar.uno:Source"
+  ]
+}

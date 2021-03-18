@@ -1,0 +1,36 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native image utilities",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.ImageTools",
+  "InternalsVisibleTo":[
+    "Fuse.Camera",
+    "Fuse.CameraRoll",
+    "Fuse.ImageTools.Test"
+  ],
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "Android/*",
+    "iOS/*",
+    "Desktop/*",
+    "Android/ImageStorageTools.java:Java:Android",
+    "Android/Image.java:Java:Android",
+    "Android/ImageUtils.java:Java:Android",
+    "iOS/Actions.h:CHeader:iOS",
+    "iOS/ImagePicker.h:CHeader:iOS",
+    "iOS/ImagePicker.m:CSource:iOS",
+    "iOS/ImageHelper.h:CHeader:iOS",
+    "iOS/ImageHelper.m:CSource:iOS"
+  ],
+  "Excludes": [
+    "Tests/",
+  ]
+}

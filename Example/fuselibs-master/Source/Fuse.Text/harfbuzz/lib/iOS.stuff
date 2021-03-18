@@ -1,0 +1,3 @@
+if iOS {
+/* 0.85MB */ iOS: "https://www.nuget.org/api/v2/package/harfbuzz-iOS-static/1.2.4"
+}

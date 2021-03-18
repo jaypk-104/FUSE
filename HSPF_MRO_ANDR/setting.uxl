@@ -1,0 +1,31 @@
+<Extensions Backend="CPlusPlus">
+<Require Condition="Android" Gradle.BuildFile.End>
+	    <![CDATA[
+	      // define the task
+	      task updateManifest(type: UpdateManifestTask)
+
+	      // implement the task
+	      class UpdateManifestTask extends DefaultTask {
+	        @TaskAction
+	        def update() {
+
+	          // find the manifest and get the contents
+	          // TODO: use gradle to find manifest path based on variant/flavor
+	          def manifestPath = "app/src/main/AndroidManifest.xml"
+	          def manifestFile = new File(manifestPath)
+	          def content = manifestFile.getText()
+
+	          // update content, in our case, find and replace some string
+	          //def updatedContent = content.replaceAll("<application ", "<application android:networkSecurityConfig=\"@xml/network_security_config\" ")
+	          def updatedContent = content.replaceAll("<application ", "<application android:usesCleartextTraffic=\"true\" ")
+	          manifestFile.write(updatedContent)
+	        }
+	      }
+
+	      // make processDebugManifest task depend on our new task to ensure the manifest is updated when it's needed
+	      afterEvaluate {
+	        processDebugManifest.dependsOn updateManifest
+	      }
+	    ]]>
+	  </Require>
+</Extensions>

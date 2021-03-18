@@ -1,0 +1,43 @@
+{
+  "name": "@fuse-open/fuselibs",
+  "version": "2.0.0-beta.0",
+  "description": "Fuselibs is a collection of Uno libraries that provide the UI framework used to build Fuse apps.",
+  "devDependencies": {
+    "@fuse-open/uno": "^2.0.0-beta.3"
+  },
+  "scripts": {
+    "build": "uno doctor Source",
+    "prepack": "uno doctor Source --configuration=Release",
+    "test": "uno test Source",
+    "android": "uno build android Tests/ManualTests/ManualTestingApp/ManualTestingApp.unoproj --run",
+    "dotnet": "uno build dotnet Tests/ManualTests/ManualTestingApp/ManualTestingApp.unoproj --run",
+    "ios": "uno build ios Tests/ManualTests/ManualTestingApp/ManualTestingApp.unoproj --run",
+    "native": "uno build native Tests/ManualTests/ManualTestingApp/ManualTestingApp.unoproj --run"
+  },
+  "files": [
+    "Source/build/*",
+    ".unoconfig"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuse-open/fuselibs.git"
+  },
+  "keywords": [
+    "mobile",
+    "app",
+    "framework",
+    "fuse",
+    "uno",
+    "ux"
+  ],
+  "author": "Fuse Open",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fuse-open/fuselibs/issues"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/fuse-open"
+  },
+  "homepage": "https://github.com/fuse-open/fuselibs#readme"
+}

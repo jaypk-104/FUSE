@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/jay/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "HSMRO-Release-armeabi-v7a": {
+      "artifactName": "HSMRO",
+      "buildCommand": "/Users/jay/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target HSMRO",
+      "abi": "armeabi-v7a",
+      "output": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libHSMRO.so"
+    }
+  }
+}

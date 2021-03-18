@@ -1,0 +1,18 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Audio playback support",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Audio",
+  "Packages": [
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse/Fuse.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "Apple/AudioHelper.h:CHeader:iOS",
+    "Apple/AudioHelper.m:CSource:iOS",
+  ]
+}

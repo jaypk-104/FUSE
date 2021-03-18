@@ -1,0 +1,25 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native Launcher",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Net.Http",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse.Triggers/Fuse.Triggers.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Android/Fuse.Android.unoproj",
+    "../Fuse.iOS/Fuse.iOS.unoproj"
+  ],
+  "Includes": [
+    "Maps/MapsLauncher.uno",
+    "Maps/MapsTrigger.uno",
+    "Maps/JS.uno"
+  ],
+  "InternalsVisibleTo": [
+    "Fuse.Launcher.Test"
+  ]
+}

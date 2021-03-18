@@ -1,0 +1,236 @@
+<!-- This file was generated based on /usr/local/share/uno/Packages/UnoCore/1.12.0/Targets/iOS/HS MRO/HS MRO-Info.plist. -->
+<!-- WARNING: Changes might be lost if you edit this file directly. -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>HS MRO (preview)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+<!--#if #(Project.Mobile.UriScheme:IsSet)-->
+<!--				<string>#(Project.Mobile.UriScheme)</string>-->
+<!--#endif-->
+<!--#if #(Project.iOS.PList.UriSchemes:IsSet)-->
+<!--				#(Project.iOS.PList.UriSchemes:SplitAndJoin('\n\t\t\t\t', '<string>', '</string>'))-->
+<!--#endif-->
+			</array>
+		</dict>
+	</array>
+
+	<key>CFBundleVersion</key>
+	<string>0.0.0</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+<!--#if #(Project.iOS.PList.UIRequiredDeviceCapabilities:IsSet)-->
+<!--		#(Project.iOS.PList.UIRequiredDeviceCapabilities:SplitAndJoin('\n\t\t', '<string>', '</string>'))-->
+<!--#endif-->
+	</array>
+
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+<!--#if #(Project.Mobile.Orientations:Equals('Auto')) || #(Project.Mobile.Orientations:Equals('Portrait'))-->
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+<!--#endif-->
+<!--#if #(Project.Mobile.Orientations:Equals('Auto')) || #(Project.Mobile.Orientations:Equals('Landscape'))-->
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+<!--#endif-->
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+<!--#if #(Project.Mobile.Orientations:Equals('Auto')) || #(Project.Mobile.Orientations:Equals('Portrait'))-->
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+<!--#endif-->
+<!--#if #(Project.Mobile.Orientations:Equals('Auto')) || #(Project.Mobile.Orientations:Equals('Landscape'))-->
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+<!--#endif-->
+	</array>
+
+	<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+
+	<key>NSCameraUsageDescription</key>
+	<string>HS MRO would like to take pictures or recordings with the camera.</string>
+
+	<key>NSMicrophoneUsageDescription</key>
+	<string>HS MRO uses audio recordings in its user experience.</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>HS MRO allows importing images from the PhotoLibrary.</string>
+
+<!--#if #(Project.iOS.PList.MKDirectionsApplicationSupportedModes:IsSet)-->
+<!--	<key>MKDirectionsApplicationSupportedModes</key>-->
+<!--	<array>-->
+<!--		#(Project.iOS.PList.MKDirectionsApplicationSupportedModes:SplitAndJoin('\n\t\t', '<string>', '</string>'))-->
+<!--	</array>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSHealthShareUsageDescription:IsSet)-->
+<!--	<key>NSHealthShareUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSHealthShareUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSHealthUpdateUsageDescription:IsSet)-->
+<!--	<key>NSHealthUpdateUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSHealthUpdateUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSCalendarsUsageDescription:IsSet)-->
+<!--	<key>NSCalendarsUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSCalendarsUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSBluetoothPeripheralUsageDescription:IsSet)-->
+<!--	<key>NSBluetoothPeripheralUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSBluetoothPeripheralUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSAppleMusicUsageDescription:IsSet)-->
+<!--	<key>NSAppleMusicUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSAppleMusicUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSContactsUsageDescription:IsSet)-->
+<!--	<key>NSContactsUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSContactsUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSHomeKitUsageDescription:IsSet)-->
+<!--	<key>NSHomeKitUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSHomeKitUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSLocationAlwaysUsageDescription:IsSet)-->
+<!--	<key>NSLocationAlwaysUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSLocationAlwaysUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSLocationUsageDescription:IsSet)-->
+<!--	<key>NSLocationUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSLocationUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSLocationWhenInUseUsageDescription:IsSet)-->
+<!--	<key>NSLocationWhenInUseUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSLocationWhenInUseUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.NSMotionUsageDescription:IsSet)-->
+<!--	<key>NSMotionUsageDescription</key>-->
+<!--	<string>#(Project.iOS.PList.NSMotionUsageDescription)</string>-->
+<!--#endif-->
+
+<!--#if #(FontFile:IsRequired)-->
+	<key>UIAppFonts</key>
+	<array>
+		<string>data/aliveicons-9f325d4c.ttf</string>
+		<string>data/agothic14-37abadcc.ttf</string>
+		<string>data/jejugothic-f6919fca.ttf</string>
+		<string>data/zhongf-c650f926.ttf</string>
+		<string>data/seoulnamsanm-6b9b9bef.ttf</string>
+		<string>data/notosans-medium-8124beb5.ttf</string>
+		<string>data/notosans-regular-c377e98c.ttf</string>
+		<string>data/notosanskr-light-109c50fc.otf</string>
+		<string>data/notosanskr-medium-92c74e57.otf</string>
+		<string>data/notosanskr-regular-4963ea20.otf</string>
+		<string>data/notosanskr-thin-4d527451.otf</string>
+		<string>data/notosanskr-black-23750c71.otf</string>
+		<string>data/fontawesome-b2a7632f.otf</string>
+		<string>data/roboto-medium-3b4bc707.ttf</string>
+	</array>
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UIApplicationExitsOnSuspend:IsSet)-->
+<!--	<key>UIApplicationExitsOnSuspend</key>-->
+<!--	<#(Project.iOS.PList.UIApplicationExitsOnSuspend:Bool)/>-->
+<!--#endif-->
+
+	<key>UIBackgroundModes</key>
+	<array>
+<!--#if #(iOS.BackgroundModes:IsRequired)-->
+<!--		#(iOS.BackgroundModes:Join('\n\t\t', '<string>', '</string>'))-->
+<!--#endif-->
+<!--#if #(Project.iOS.PList.UIBackgroundModes:IsSet)-->
+<!--		#(Project.iOS.PList.UIBackgroundModes:SplitAndJoin('\n\t\t', '<string>', '</string>'))-->
+<!--#endif-->
+<!--#if #(Project.iOS.SystemCapabilities.Push:Test(1, 0))-->
+<!--		<string>remote-notification</string>-->
+<!--#endif-->
+	</array>
+
+<!--#if #(Project.iOS.PList.UIFileSharingEnabled:IsSet)-->
+<!--	<key>UIFileSharingEnabled</key>-->
+<!--	<#(Project.iOS.PList.UIFileSharingEnabled:Bool)/>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UINewsstandApp:IsSet)-->
+<!--	<key>UINewsstandApp</key>-->
+<!--	<#(Project.iOS.PList.UINewsstandApp:Bool)/>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UIPrerenderedIcon:IsSet)-->
+<!--	<key>UIPrerenderedIcon</key>-->
+<!--	<#(Project.iOS.PList.UIPrerenderedIcon:Bool)/>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UIRequiresPersistentWiFi:IsSet)-->
+<!--	<key>UIRequiresPersistentWiFi</key>-->
+<!--	<#(Project.iOS.PList.UIRequiresPersistentWiFi:Bool)/>-->
+<!--#endif-->
+
+	<key>UIStatusBarHidden</key>
+	<false/>
+
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
+
+<!--#if #(Project.iOS.PList.UISupportedExternalAccessoryProtocols:IsSet)-->
+<!--	<key>UISupportedExternalAccessoryProtocols</key>-->
+<!--	<array>-->
+<!--		#(Project.iOS.PList.UISupportedExternalAccessoryProtocols:SplitAndJoin('\n\t\t', '<string>', '</string>'))-->
+<!--	</array>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UIViewControllerBasedStatusBarAppearance:IsSet)-->
+<!--	<key>UIViewControllerBasedStatusBarAppearance</key>-->
+<!--	<#(Project.iOS.PList.UIViewControllerBasedStatusBarAppearance:Bool)/>-->
+<!--#endif-->
+
+<!--#if #(Project.iOS.PList.UIViewEdgeAntialiasing:IsSet)-->
+<!--	<key>UIViewEdgeAntialiasing</key>-->
+<!--	<#(Project.iOS.PList.UIViewEdgeAntialiasing:Bool)/>-->
+<!--#endif-->
+
+</dict>
+</plist>

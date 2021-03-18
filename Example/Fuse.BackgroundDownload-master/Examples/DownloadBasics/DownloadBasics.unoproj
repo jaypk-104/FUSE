@@ -1,0 +1,18 @@
+{
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.BasicTheme",
+    "Fuse.Launcher.InterApp"
+  ],
+  "Android": {
+    "AllowBackup" : true
+  },
+  "Projects": [
+    "../../src/Fuse.BackgroundDownload.unoproj",
+  ],
+  "Includes": [
+    "*",
+   
+  ]
+}

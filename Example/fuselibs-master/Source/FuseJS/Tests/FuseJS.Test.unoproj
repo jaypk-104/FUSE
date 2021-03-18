@@ -1,0 +1,24 @@
+{
+  "Packages": [
+    "FuseJS",
+    "Fuse.Controls",
+    "Fuse.Controls.Panels",
+    "Fuse.Controls.Primitives",
+    "Fuse.Common",
+    "Fuse.Reactive",
+    "Fuse.Reactive.Expressions",
+    "Fuse.Reactive.Bindings",
+    "Fuse.Scripting.JavaScript",
+    "Fuse.Nodes",
+    "Uno.Testing",
+    "Fuse.FileSystem"
+  ],
+  "Projects": [
+    "../../Fuse.Common/Tests/FuseTest/FuseTest.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "*.js:Bundle",
+    "assets/*:Bundle"
+  ]
+}

@@ -1,0 +1,16 @@
+<Panel ux:Class="HS.Rectangle">
+    <string ux:Property="Text" />
+    <string ux:Property="FontSize" />
+    <string ux:Property="Value" />
+    
+    <Rectangle Layer="Background" CornerRadius="4" Color="#125F63" Height="40" Width="50">
+        <DropShadow Angle="90" Distance="1" Spread="0.2" Size="2" Color="#00000060" />
+    </Rectangle>
+
+   <HS.Text Value="{ReadProperty Text}" FontSize="40" Font="AGOTHIC14" Color="Black" Alignment="Center" TextWrapping="Wrap" Padding="0, 0, 0, 0" />
+
+    <WhilePressed>
+        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+    </WhilePressed>
+
+</Panel>

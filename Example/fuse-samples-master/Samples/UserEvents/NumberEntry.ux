@@ -1,0 +1,18 @@
+<StackPanel ux:Class="NumberEntry" Padding="5" ItemSpacing="5" Color="#AAA">
+
+	<JavaScript File="NumberEntry.js" />
+	
+	<Panel Padding="5">
+		<Rectangle Layer="Background" Color="#FFF" CornerRadius="10" />
+		<Text Value="{pin}" TextAlignment="Center" FontSize="40" />
+	</Panel>
+
+	<Panel>
+		<NumberPad>
+			<NumberSelected Handler="{selected}" />
+			<NumberCleared Handler="{cleared}" />
+			<NumberBack Handler="{back}" />
+		</NumberPad>
+	</Panel>
+
+</StackPanel>

@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+
+configurations { native_implementation }
+
+dependencies {
+    implementation fileTree(dir: 'src/main/libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.drewnoakes:metadata-extractor:2.10.1'
+    implementation 'com.android.support:support-v4:23.0.1'
+    implementation 'com.google.android.gms:play-services-vision:16.2.0'
+    implementation 'com.android.support:design:23.0.1'
+    
+    
+}
+
+// Extracts native libraries from AARs in the native_implementation configuration.
+// This is done so that the NDK can access these libraries.
+task extractNativeLibraries() {
+    doFirst {
+        configurations.native_implementation.files.each { f ->
+            copy {
+                from zipTree(f)
+                into 'build/native'
+                include 'jni/**/*'
+            }
+        }
+    }
+}
+
+tasks.whenTaskAdded {
+    task-> if (task.name.contains('external') && !task.name.contains('Clean')) {
+//#if #(Gradle.Dependency.NativeImplementation:IsRequired)
+//        task.dependsOn(extractNativeLibraries)
+//#endif
+    }
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
+android {
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.2'
+
+    defaultConfig {
+//#if !#(LIBRARY:Defined)
+        applicationId = 'com.apps.hsmro'
+//#endif
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode = 13
+        versionName = '0.0.0'
+        ndk {
+//#if #(DEBUG:Defined)
+//            abiFilters = [#(Project.Android.Architectures.Debug:Join(', ', '\'', '\''))]
+//#else
+            abiFilters = ['armeabi-v7a', 'arm64-v8a']
+//#endif
+        }
+
+        externalNativeBuild {
+            cmake {
+                // The build configuration of the native binary might differ from the build
+                // configuration of the APK. For performance reasons, we don't want to use the
+                // Fuse Simulator on the significantly slower debug binaries, so building debug by
+                // default means we are giving users a bad experience by default. Native debug
+                // binaries are only really useful when actually debugging generated C++ code.
+                // Running 'uno build android --debug' will produce debuggable C++ code.
+                arguments '-DCMAKE_BUILD_TYPE=Release',
+                    '-DANDROID_STL=c++_static',
+                    '-DANDROID_PLATFORM=android-16',
+                    '-DANDROID_TOOLCHAIN=clang',
+                    '-DANDROID_NDK=/Users/jay/Library/Android/sdk/ndk-bundle'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/CMakeLists.txt'
+        }
+    }
+
+//#if #(Project.Android.Key.Store:IsSet)
+    signingConfigs {
+        release {
+            keyAlias 'application'
+            keyPassword 'hsnetw11'
+            storeFile file('/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/release.keystore')
+            storePassword 'hsnetw11'
+        }
+    }
+//#endif
+
+    buildTypes {
+        release {
+//#if #(DEBUG:Defined)
+//            debuggable = true
+//#elif #(Project.Android.Key.Store:IsSet)
+            signingConfig = signingConfigs.release
+//#endif
+            minifyEnabled = false
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    lintOptions {
+        checkReleaseBuilds = false
+    }
+}
+
+// define the task
+task updateManifest(type: UpdateManifestTask)
+
+// implement the task
+class UpdateManifestTask extends DefaultTask {
+  @TaskAction
+  def update() {
+
+    // find the manifest and get the contents
+    // TODO: use gradle to find manifest path based on variant/flavor
+    def manifestPath = "app/src/main/AndroidManifest.xml"
+    def manifestFile = new File(manifestPath)
+    def content = manifestFile.getText()
+
+    // update content, in our case, find and replace some string
+    //def updatedContent = content.replaceAll("<application ", "<application android:networkSecurityConfig=\"@xml/network_security_config\" ")
+    def updatedContent = content.replaceAll("<application ", "<application android:usesCleartextTraffic=\"true\" ")
+    manifestFile.write(updatedContent)
+  }
+}
+
+// make processDebugManifest task depend on our new task to ensure the manifest is updated when it's needed
+afterEvaluate {
+  processDebugManifest.dependsOn updateManifest
+}

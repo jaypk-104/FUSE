@@ -1,0 +1,6 @@
+<Panel ux:Class="UX.MathFunctions.Clamp">
+	<Let ux:Name="a"/>
+	<Let ux:Name="mn"/>
+	<Let ux:Name="mx"/>
+	<FuseTest.Value Float4="clamp({a},{mn},{mx})" ux:Name="clamp"/>
+</Panel>

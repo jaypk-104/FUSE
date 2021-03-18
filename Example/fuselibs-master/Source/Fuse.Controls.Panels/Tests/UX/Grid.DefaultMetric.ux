@@ -1,0 +1,20 @@
+<Panel ux:Class="UX.Grid.DefaultMetric">
+	<DockPanel>
+		<Grid Dock="Top" ColumnCount="4">
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="2" ux:Name="T1"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="1" ux:Name="T2"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="1" ux:Name="T3"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="3" ux:Name="T4"/>
+		</Grid>
+	</DockPanel>
+
+	<DockPanel>
+		<Grid Dock="Left" RowCount="4" ChildOrder="ColumnMajor" ux:Name="G3">
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="2" ux:Name="L1"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="1" ux:Name="L2"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="1" ux:Name="L3"/>
+			<FuseTest.FlowAreaElement CellSize="100,100" Length="3" ux:Name="L4"/>
+		</Grid>
+	</DockPanel>
+
+</Panel>

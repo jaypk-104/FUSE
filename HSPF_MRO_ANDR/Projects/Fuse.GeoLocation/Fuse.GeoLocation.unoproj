@@ -1,0 +1,26 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native Location",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Collections",
+    "Uno.Threading",
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.iOS.LocationPermissions/Fuse.iOS.LocationPermissions.unoproj"
+  ],
+  "Includes": [
+    "*",
+    "Android/Android.uxl:Extensions",
+    "Android/UpdateListener.java:Java:Android",
+    "Android/BackgroundService.java:Java:Android",
+    "Android/Assets/DefaultIcon.png:File",
+    
+    "iOS/LocationManagerDelegate.h:ObjCHeader:iOS",
+    "iOS/LocationManagerDelegate.mm:ObjCSource:iOS",
+  ]
+}

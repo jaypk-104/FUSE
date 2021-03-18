@@ -1,0 +1,2 @@
+<DockPanel ux:Class="Fuse.Controls.ClientPanel" Padding="window().safeMargins">
+</DockPanel>

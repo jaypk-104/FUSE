@@ -1,0 +1,42 @@
+<Panel ux:Class="Confirm_inq_appr" ux:Name="root">
+	<Panel Margin="0,0,0,0" Opacity="0" ux:Name="AddToBasketPanel" HitTestMode="None">
+		<DockPanel Alignment="Default" Padding="0, 10, 0, 0">
+			<Rectangle ux:Name="addTaskButtons" Layer="Background" Margin="0,0,0,0" Dock="Top">
+				<Tapped>
+					<Set root.Show="False" />
+				</Tapped>
+			</Rectangle>
+			<Text ux:Name="text" Value="{Property root.Text}" Alignment="Center" Color="White" TextWrapping="Wrap" FontSize="25" Font="AGOTHIC14" Dock="Fill" />
+		
+			<StackPanel ux:Name="ButtonsPanel" Orientation="Horizontal" Alignment="HorizontalCenter" Dock="Bottom">
+				<Rectangle CornerRadius="20" Margin="10" Width="150" Color="White" Padding="10" Height="40" Fill="#75AE30" Dock="Top">
+					<Text Alignment="Center" Font="AGOTHIC14" Color="White">Yes</Text>
+					<Tapped>
+						<Set root.Show="False" />
+						<RaiseUserEvent EventName="Event_Handler" />
+					</Tapped>
+				</Rectangle>
+				<Rectangle CornerRadius="20" Margin="10" Width="150" Color="White" Padding="10" Height="40" Fill="#F58F87">
+					<Text Alignment="Center" Font="AGOTHIC14" Color="White">No</Text>
+					<Tapped>
+						<Set root.Show="False" />
+					</Tapped>
+				</Rectangle>
+				<WhileTrue ux:Name="show" Value="{Property root.Show}">
+							<Change text.Offset="0,0" Duration="0.2" Delay="0.2" DelayBack="0" Easing="CubicOut" />
+							<Change addTaskButtons.Color="#000d" Duration="0.15" DelayBack="0.25" />
+							<Change ButtonsPanel.Offset="0,0" Duration="0.30" Delay="0" Easing="QuinticInOut" />
+							<Change AddToBasketPanel.HitTestMode="Children" />
+							<Change AddToBasketPanel.Opacity="1" Duration="0.5" Easing="QuinticOut" />
+						</WhileTrue>
+			</StackPanel>
+		</DockPanel>
+
+	</Panel>
+
+	<bool ux:Property="Show" />
+	<UserEvent ux:Name="Event_Handler" />
+	<OnUserEvent ux:Class="Handler_inq_appr" EventName="Event_Handler" />
+	<object ux:Property="Handler_inq_appr" />
+	<string ux:Property="Text" />
+</Panel>

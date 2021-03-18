@@ -1,0 +1,76 @@
+<Page ux:Class="ToppingsPage">
+	
+	<JavaScript>
+		var Observable = require("FuseJS/Observable")
+		
+		var current = Observable("");
+		var sel = Observable();
+		
+		sel.onValueChanged(module, function() {
+			current.value = "Selected: " + sel.toArray().join(", ");
+		});
+
+		module.exports = {
+			current: current,
+			sel: sel
+		};
+	</JavaScript>
+
+	<StackPanel ItemSpacing="10">
+		<Label Value="Select up to 3 additional toppings" />
+		<Panel Margin="5">
+			<ColumnLayout ColumnSize="80" ColumnSpacing="7" ItemSpacing="7" Sizing="Fill" />
+			<Selection Values="{sel}" MaxCount="3" />
+			
+			<Panel ux:Class="Topping" Padding="5" BoxSizing="FillAspect">
+				<string ux:Property="Value" />
+				<FileSource ux:Property="File" />
+				
+				<Selectable Value="{ReadProperty Value}"/>
+
+				<Rectangle ux:Name="theBack" CornerRadius="5" Layer="Background" Color="#FFF" />
+				<Image ux:Name="theImage" File="{ReadProperty File}" Margin="10" />
+				
+				<WhileSelected>
+					<Change theBack.Color="#CAF" Duration="0.2" />
+				</WhileSelected>
+
+				<Tapped>
+					<ToggleSelection />
+				</Tapped>
+				
+				<Selected>
+					<Scale Target="theImage" Factor="1.2" Duration="0.3" />
+				</Selected>
+
+				<Deselected>
+					<Scale Target="theImage" Factor="0.5" Duration="0.3" />
+					<Change theImage.Color="#800" Duration="0.3" />
+				</Deselected>
+			</Panel>
+			
+			<Topping File="Assets/basil.png" Value="basil" />
+			<Topping File="Assets/green_olives.png" Value="green olives" />
+			<Topping File="Assets/ham.png" Value="ham" />
+			<Topping File="Assets/onions.png" Value="onions" />
+			<Topping File="Assets/salami.png" Value="salami" />
+			<Topping File="Assets/black_olives.png" Value="black olives" />
+			<Topping File="Assets/green_pepper.png" Value="green peppers" />
+			<Topping File="Assets/mushrooms.png" Value="mushrooms" />
+			<Topping File="Assets/pineapple.png" Value="pineapple" />
+			<Topping File="Assets/red_pepper.png" Value="red peppers" />
+			<Topping File="Assets/tomato.png" Value="tomatos" />
+			
+		</Panel>
+
+		<Label Value="{current}" />
+		
+		<PizzaButton Alignment="BottomRight" Text="Delivery">
+			<Clicked>
+				<GoBack/>
+			</Clicked>
+		</PizzaButton>
+		
+	</StackPanel>
+	
+</Page>

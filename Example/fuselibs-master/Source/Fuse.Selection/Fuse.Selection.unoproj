@@ -1,0 +1,23 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Library for selection behavior",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+    "Fuse.Selection.Test",
+  ],
+  "Packages": [
+    "Uno.Collections"
+  ],
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Reactive.Expressions/Fuse.Reactive.Expressions.unoproj",
+    "../Fuse.Reactive/Fuse.Reactive.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Triggers/Fuse.Triggers.unoproj",
+  ],
+  "Includes": [
+    "*"
+  ]
+}

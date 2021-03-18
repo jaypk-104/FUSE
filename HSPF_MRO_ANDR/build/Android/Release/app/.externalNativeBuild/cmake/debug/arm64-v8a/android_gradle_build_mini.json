@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/jay/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.externalNativeBuild/cmake/debug/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "HSMRO-Release-arm64-v8a": {
+      "artifactName": "HSMRO",
+      "buildCommand": "/Users/jay/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.externalNativeBuild/cmake/debug/arm64-v8a --target HSMRO",
+      "abi": "arm64-v8a",
+      "output": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/cmake/debug/obj/arm64-v8a/libHSMRO.so"
+    }
+  }
+}

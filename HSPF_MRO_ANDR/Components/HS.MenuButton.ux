@@ -1,0 +1,13 @@
+<Panel ux:Class="HS.MenuButton">
+    <string ux:Property="Text" />
+    <string ux:Property="FontSize" />
+    <string ux:Property="Id" />
+    <string ux:Property="Value" />
+        
+    <HS.Text Value="{ReadProperty Text}" FontSize="40" Font="AGOTHIC14" Color="Black" Layer="Overlay" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+
+    <WhilePressed>
+        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+    </WhilePressed>
+
+</Panel>

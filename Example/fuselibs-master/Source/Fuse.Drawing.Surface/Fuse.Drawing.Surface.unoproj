@@ -1,0 +1,32 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Library of vector drawing and surface",
+  "Publisher": "Fuse Open",
+  "Title": "Fuse.Drawing.Surface",
+  "InternalsVisibleTo": [
+    "Fuse.Controls.Panels",
+    "Fuse.Controls.Primitives",
+    "Fuse.Drawing.Surface.Test",
+    "Fuse.Controls.Native",
+  ],
+  "Packages": [
+    "Uno.Collections",
+  ],
+  "Projects": [
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Drawing.Planar/Fuse.Drawing.Planar.unoproj",
+    "../Fuse.Drawing.Primitives/Fuse.Drawing.Primitives.unoproj",
+    "../Fuse.Drawing/Fuse.Drawing.unoproj",
+    "../Fuse.Elements/Fuse.Elements.unoproj",
+  ],
+  "Includes": [
+    "*",
+    "CoreGraphics/CoreGraphicsLib.h:CHeader:iOS||OSX",
+    "Android/LinearGradientStore.java:Java:Android",
+    "Android/GraphicsSurfaceContext.java:Java:Android",
+  ],
+  "Excludes": [
+    "Tests/",
+  ]
+}

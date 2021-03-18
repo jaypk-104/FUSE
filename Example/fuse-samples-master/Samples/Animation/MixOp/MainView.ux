@@ -1,0 +1,8 @@
+<App>
+	<DockPanel>
+		<Grid ColumnCount="2">
+			<Demo1/>
+			<Demo2/>
+		</Grid>
+	</DockPanel>
+</App>

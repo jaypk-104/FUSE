@@ -1,0 +1,285 @@
+<Page ux:Class="c_gr" ux:Name="c_gr" Alignment="Default">
+    <WhileActive>
+        <OnBackButton Handler="{backBtn}">
+            <!--HomeScreen Type="Finish" /-->
+        </OnBackButton>
+    </WhileActive>
+     <JavaScript File="c_gr.js" />
+    <Router ux:Dependency="router" />
+    <Rectangle ux:Name="indicator" LayoutMaster="page1Tab" Alignment="Bottom" Height="4" Color="#fff">
+        <LayoutAnimation>
+            <Move RelativeTo="WorldPositionChange" X="1" Duration="0.3" Easing="BackIn" />
+        </LayoutAnimation>
+    </Rectangle>
+    <Panel Dock="Fill" Alignment="Default">
+        <Panel ux:Class="Tab" ClipToBounds="false" Margin="0,0,0,4" Background="#bdc3c7">
+            <string ux:Property="Text" />
+            <string ux:Property="Color" />
+            <Text Value="{ReadProperty Text}" Color="{ReadProperty Color}" Font="AGOTHIC14" Alignment="Center" />
+        </Panel>
+        <DockPanel Alignment="Default">
+           <Rectangle Alignment="Default" Opacity="1" Margin="0, 0, 0, 0" Height="100" Padding="0, 10, 0, 0" Dock="Top">
+                <Grid Dock="Left" RowCount="1" ColumnCount="3" Width="160" Alignment="Left" CellSpacing="1" Height="100%" Padding="10, 5, 5, 5" Columns="40,1*, auto" MinWidth="160">
+                    <Image Row="0" Column="0" File="../../Assets/Icons/calendar.png" Width="60" Height="60" Alignment="Center" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                    <Text Value="{g_DATE_DD}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Center" FontSize="40" Padding="0, 0, 0, 0" />
+                    <WrapPanel Orientation="Vertical" Alignment="Center">
+                        <Text Value="{g_DATE_YM}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="15" Alignment="CenterLeft" />
+                        <Text Value="{g_DATE_DAY}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Dock="Right" ColumnCount="2" Alignment="Right" CellSpacing="7" Padding="10, 5, 5, 5" Width="160" Columns="auto, 40" Margin="0, 0, 5, 0" MinWidth="160">
+                    <WrapPanel Orientation="Vertical" Alignment="Center" Margin="0, 0, 0, 0">
+                        <Text Value="{g_BP_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="15" TextAlignment="Right" />
+                        <Text Value="{g_USR_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="13" TextAlignment="Right" />
+                    </WrapPanel>
+                    <Image File="../../Assets/Icons/user.png" Width="60" Height="60" Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                </Grid>
+                <LinearGradient>
+                    <GradientStop Offset="0" Color="#4740b4" />
+                    <GradientStop Offset="1" Color="#8C73C2" />
+                </LinearGradient>
+            </Rectangle>
+    
+            <Grid Dock="Top" ColumnCount="1" Height="50" Background="#ffffff" Alignment="Default">
+                <Panel ux:Name="page1Tab">
+                    <Tab Text="입고등록" ux:Name="tab1" Background="#ffffff" Color="#ffffff" />
+                    <Clicked>
+                        <Set navigation.Active="page1" />
+                        <Set tab1.Background="#ffffff" />
+                        <!--Set tab2.Background="#8b72c2" /-->
+                        
+                        <Set tab1.Color="#000000" />
+                        <!--Set tab2.Color="#ffffff" /-->
+                    </Clicked>
+                </Panel>
+                <!--Panel ux:Name="page2Tab">
+                    <Tab Text="입고조회" ux:Name="tab2" Background="#ffffff" Color="#000000">
+                        <Clicked>
+                            <Set navigation.Active="page2" />
+                            <Set tab1.Background="#8b72c2" />
+                            <Set tab2.Background="#ffffff" />
+    
+                            <Set tab1.Color="#ffffff" />
+                            <Set tab2.Color="#000000" />
+                            <PlaySound File="../../Assets/Sounds/OK.mp3" >
+                        </Clicked>
+                    </Tab>
+                </Panel-->
+            </Grid>
+        
+        <PageControl ux:Name="navigation" Dock="Fill" Alignment="Default" Interaction="None">
+                        <!--page1 backup-->
+                    <Page ux:Name="page1" Background="#ffffff" Padding="10, 10, 10, 10" Alignment="Default">
+                        <WhileTrue Value="{dtpk1_visible}">
+                            <NativeViewHost>
+                                <DatePicker Value="{someDate}" MinValue="{minDate}" MaxValue="{maxDate}" ux:Name="dtpk1" Background="White" Layer="Overlay" />
+                            </NativeViewHost>
+                        </WhileTrue>
+                        <WhileTrue Value="{isBusy}">
+                            <Panel ux:Class="MyLoadingIndicator1" ThemeColor="#1565C0" Dock="Top" Height="100%" Background="#FCFCFC91" Layer="Overlay">
+                                <float4 ux:Property="ThemeColor" />
+                                <Circle ux:Name="rotatingStroke" Width="50" Height="50" StartAngleDegrees="-45" EndAngleDegrees="45">
+                                    <Stroke Width="2" Color="{ReadProperty ThemeColor}" />
+                                </Circle>
+                                <Circle Color="{ReadProperty ThemeColor}" Width="20" Height="20">
+                                    <Timeline ux:Name="myTimeline">
+                                        <Scale Factor=".5" Duration=".25" Easing="CircularOut" EasingBack="CircularIn" />
+                                        <Scale Factor="2" Duration=".25" Delay=".25" Easing="BounceOut" EasingBack="BounceIn" />
+                                    </Timeline>
+                                </Circle>
+                                <WhileFalse>
+                                    <Cycle Target="myTimeline.TargetProgress" Low="0" High="1" Frequency=".5" />
+                                    <Spin Target="rotatingStroke" Frequency="1" />
+                                </WhileFalse>
+                            </Panel>
+                            <Panel HitTestMode="LocalBounds">
+                                <Busy ux:Name="isBusy" IsActive="{isBusy}" />
+                                <WhileBusy>
+                                    <Change loadingPanel.Opacity="1" Duration=".4" />
+                                </WhileBusy>
+                                <MyLoadingIndicator1 ux:Name="loadingPanel" Opacity="0" ThemeColor="#5600ea" />
+                            </Panel>
+                        </WhileTrue>    
+                        
+                        <DockPanel>
+
+                        
+                        
+                            <Text Alignment="Center" Dock="Top" Value="거래명세서 우측 상단 QR코드를 스캔하세요" Font="AGOTHIC14" Width="100%" TextAlignment="Center" Color="#FF578E" FontSize="14" Visibility="{device}"/>
+                            <DockPanel Alignment="Top" Padding="5, 5, 5, 5" Width="100%" Dock="Top" Height="100" Margin="0, 5, 0, 0">
+                                    
+                                <DockPanel Dock="Left" Alignment="Default" Width="80%">
+                                                                <WrapPanel Orientation="Horizontal" Dock="Top" Margin="0, 0, 0, 0" Alignment="Default">
+                                                                    <Text Dock="Top" Value="명세서번호" Width="80" Margin="0, 0, 0, 0" Font="AGOTHIC14" Height="30" Alignment="Default" TextAlignment="Left" FontSize="15" />
+                                                                    <Rectangle Width="180" Height="30" Margin="0, 0, 0, 10">
+                                                                        <Text Dock="Top" ux:Name="txt1" Value="{txt}" Alignment="Center" TextAlignment="Left" Margin="5, 10, 0, 0" Font="AGOTHIC14" Height="30" FontSize="15" Width="180" />
+                                                                    </Rectangle>
+                                                                </WrapPanel>
+                                                                <!--WrapPanel Orientation="Horizontal" Dock="Top" Margin="0, 0, 0, 0" Alignment="Default">
+        <Text Dock="Top" Value="발주번호" Width="80" Margin="0, 0, 0, 0" Font="AGOTHIC14" Height="30" Alignment="Default" TextAlignment="Left" FontSize="15" />
+        <Rectangle Width="180" Height="30" Margin="0, 0, 0, 10">
+            <Text Dock="Top" Value="{ORDER_NO}" Alignment="Center" TextAlignment="Left" Margin="5, 10, 0, 0" Font="AGOTHIC14" Height="30" FontSize="15" Width="180" />
+        </Rectangle>
+    </WrapPanel-->
+                                                                <WrapPanel Dock="Top" Orientation="Horizontal" Alignment="CenterLeft" Margin="0, 0, 0, 0">
+                                                                    <Text Dock="Top" Value="입고일자" Width="80" Margin="0, 0, 0, 0" Font="AGOTHIC14" Height="30" Alignment="Default" TextAlignment="Left" FontSize="15" />
+                                                                    <Text Dock="Top" ux:Name="in_dt1" Value="{in_dt}" Alignment="Default" Width="100%" TextAlignment="Left" Margin="0, 0, 0, 0" Clicked="{clk_in_dt1}" Font="AGOTHIC14" Height="30" FontSize="15" />
+                                                                    <Image File="../../Assets/Icons/date1.png" Width="40" Height="40" Alignment="Default" Clicked="{clk_in_dt1}" Margin="0, 0, 0, 13" />
+                                                                </WrapPanel>
+                                                            </DockPanel>
+                                <Button Dock="Top" Width="40" Height="40" Alignment="Default" Clicked="{scanBar}" Margin="0, 0, 0, 0">
+                                    <Image File="../../Assets/Icons/scanQR.png" Width="100" Height="100" Alignment="Default" Dock="Fill" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0" />
+                                    <WhilePressed>
+                                        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+                                    </WhilePressed>
+                                </Button>
+                            </DockPanel>
+                            <ScrollView Dock="Fill" Margin="0, 10, 0, 0" Alignment="Default">
+                                <StackPanel Width="100%">
+                                    <Each Items="{gr_list}">
+                                        
+                                        <DockPanel Padding="10" Margin="0,1" Height="40" Width="100%" Alignment="Default">
+                                            <Text Value="{gr_item_cd}" Alignment="Default" Dock="Left" FontSize="15" Width="100" Font="AGOTHIC14" MinWidth="100" MaxWidth="130" />
+                                            <Text Value="{gr_item_nm}" Alignment="Default" Dock="Left" FontSize="15" Font="AGOTHIC14" />
+                                            <Text Value="{po_no}" Alignment="Default" Dock="Left" FontSize="15" Font="AGOTHIC14" />
+                                            <Text Value="{gr_qty} {gr_unit}" Alignment="Default" Dock="Right" FontSize="15" TextAlignment="Right" Font="AGOTHIC14" Width="50" MinWidth="50" MaxWidth="80" />
+                                        <LayoutAnimation>
+                                            <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                        </LayoutAnimation>
+        
+                                        <AddingAnimation>
+                                            <Move RelativeTo="Size" X="1" Duration="0.3" Easing="CircularIn" />
+                                        </AddingAnimation>
+        
+                                        <RemovingAnimation>
+                                            <Move RelativeTo="Size" X="-1" Duration="0.4" Easing="CircularOut" />
+                                        </RemovingAnimation>
+                                    </DockPanel>
+
+                                    <DockPanel Padding="10, 0, 10, 0" Margin="0, 0, 0, 0" Height="40" Width="100%" Alignment="Default">
+                                            <Text Value="{gr_spec}" Alignment="Default" Dock="Left" FontSize="13" Font="AGOTHIC14" />
+                                            <Text Value="{gr_maker}" Alignment="Default" Dock="Left" FontSize="13" Font="AGOTHIC14" Margin="10, 0, 0, 0" />
+                                            <Text Value="{gr_po_no}" Alignment="Default" Dock="Left" FontSize="13" Font="AGOTHIC14" Margin="10, 0, 0, 0" />
+                                        <LayoutAnimation>
+                                            <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                        </LayoutAnimation>
+        
+                                        <AddingAnimation>
+                                            <Move RelativeTo="Size" X="1" Duration="0.3" Easing="CircularIn" />
+                                        </AddingAnimation>
+        
+                                        <RemovingAnimation>
+                                            <Move RelativeTo="Size" X="-1" Duration="0.4" Easing="CircularOut" />
+                                        </RemovingAnimation>
+                                    </DockPanel>
+                                        <Rectangle Height="1" Dock="Top" Color="#C5C8EE" Margin="0, -10, 0, 0" />
+                                    </Each>
+                                </StackPanel>
+        
+                            </ScrollView>
+                            <DockPanel Dock="Bottom" Alignment="HorizontalCenter" Margin="60, 0, 0, 10">
+                                
+                                <Rectangle Width="120" Height="50" Dock="Left" CornerRadius="10" Margin="0, 0, 0, 0">
+                                    <Button Dock="Left" Clicked="{sendBtn}" Width="120" Height="50">
+                                        <Grid RowCount="1" ColumnCount="2" Columns="50, auto">
+                                            <Image File="../../Assets/Icons/check.png" Width="50" Height="50" Alignment="CenterLeft" />
+                                            <Text Value="입고등록" Color="#5600ea" Alignment="CenterLeft" Font="AGOTHIC14" />
+                                        </Grid>
+                                    </Button>
+                                    <WhilePressed>
+                                        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+                                    </WhilePressed>
+                                    
+                                    <Stroke Width="1" Color="#5600ea" />
+                                </Rectangle>
+                                
+                                <Rectangle Width="120" Height="50" Dock="Left" CornerRadius="10" Margin="5, 0, 0, 0">
+                                    <Button Dock="Left" Clicked="{clrBtn}" Width="120" Height="50">
+                                        <Grid RowCount="1" ColumnCount="2" Columns="50, auto">
+                                            <Image File="../../Assets/Icons/reset.png" Width="50" Height="50" Alignment="CenterLeft" />
+                                            <Text Value="초기화" Color="#5600ea" Alignment="CenterLeft" Font="AGOTHIC14" />
+                                        </Grid>
+                                    </Button>
+                                        <WhilePressed>
+                                        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+                                    </WhilePressed>
+                                    <Stroke Width="1" Color="#5600ea" />
+                                </Rectangle>
+                                <Button Dock="Right" Alignment="Right" Height="50" Clicked="{backBtn_ios}" Margin="10, 0, 0, 0" Visibility="{device}" Width="50">
+                                    <Image File="../../Assets/Icons/back.png" Alignment="Center" Height="20" Color="#00000059" />
+                                </Button>
+                            </DockPanel>
+                        </DockPanel>
+                        
+                        <WhileActive Threshold="0.5">
+                            <Set indicator.LayoutMaster="page1Tab" />
+                            <Set indicator.Color="#8458d1" />
+                            <Set tab1.Background="#ffffff" />
+                            <!--Set tab2.Background="#8b72c2" /-->
+                            <Set tab1.Color="#000000" />
+                            <!--Set tab2.Color="#ffffff" /-->
+                        </WhileActive>
+        
+                    </Page>
+                        <Page ux:Name="page2" Background="#ffffff" Padding="10, 10, 10, 10" Alignment="Default">
+                        <DockPanel Width="100%" Alignment="Default">
+                            <!--DockPanel Padding="10" Margin="0,1" Height="40" Width="100%" Alignment="Default" Dock="Top">
+                                    <Text Value="품목코드" Alignment="Default" Dock="Left" FontSize="12" Width="80" Font="AGOTHIC14" MinWidth="80" MaxWidth="80" TextAlignment="Left" />
+                                    <Text Value="품명" Alignment="Default" Dock="Left" FontSize="12" Font="AGOTHIC14" Width="100" MinWidth="100" MaxWidth="100" TextAlignment="Left" />
+                                    <Text Value="수량" Alignment="Default" Dock="Left" FontSize="12" TextAlignment="Left" Font="AGOTHIC14" Width="50" MinWidth="50" MaxWidth="50" Margin="0, 0, 0, 0"  />
+                            </DockPanel-->
+                            
+                            <ScrollView Dock="Fill" Margin="0, 0, 0, 0" Alignment="Default">
+                                <StackPanel Width="100%">
+                                    <CogWheelReload Dock="Top" />  
+                                    <Each Items="{gr_list2}">
+                                        <DockPanel Padding="10, 0, 10, 0" Margin="0, 0, 0, 10" Width="100%" Alignment="Default">
+                                                <Text Value="{gr_item_cd2}" Alignment="Default" FontSize="12" Font="AGOTHIC14" Dock="Left" />
+                                                <Text Value="{gr_item_nm2}" Alignment="Default" FontSize="12" Font="AGOTHIC14" Dock="Left" Margin="15, 0, 0, 0" />
+                                                <Text Value="{gr_qty2} {gr_unit2}" Alignment="Default" FontSize="12" Dock="Right" Margin="0, 0, 10, 0" Font="AGOTHIC14" />
+                                        <LayoutAnimation>
+                                            <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                        </LayoutAnimation>
+        
+                                        <AddingAnimation>
+                                            <Move RelativeTo="Size" Y="1" Duration="0.5" Easing="CircularIn" />
+                                        </AddingAnimation>
+                                    </DockPanel>
+                                        <DockPanel Padding="10, 0, 10, 0" Margin="0, 0, 0, 5" Width="100%" Alignment="Default">
+                                            <Text Value="{gr_spec2}" Alignment="Default" Dock="Left" FontSize="11" Font="AGOTHIC14" />
+                                            <Text Value="{gr_maker2}" Alignment="Default" Dock="Left" FontSize="11" Font="AGOTHIC14" Margin="10, 0, 0, 0" />
+                                            <Text Value="{gr_po_no2}" Alignment="Default" Dock="Left" FontSize="11" Font="AGOTHIC14" Margin="10, 0, 0, 0" />
+                                            <!--Grid ColumnCount="3" Columns="80, 100, 50, 100" Dock="Top">
+                                            </Grid-->
+                                        <LayoutAnimation>
+                                            <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                        </LayoutAnimation>
+        
+                                        <AddingAnimation>
+                                            <Move RelativeTo="Size" Y="1" Duration="0.5" Easing="CircularIn" />
+                                        </AddingAnimation>
+                                    </DockPanel>
+                                        <Rectangle Height="1" Dock="Top" Color="#C5C8EE" Margin="0, 0, 0, 10" />
+                                    </Each>
+                                </StackPanel>
+                            </ScrollView>
+                            <WrapPanel Dock="Bottom" Alignment="HorizontalCenter" Orientation="Vertical">
+                                <Text Value="당일 바코드 입고 내역만 표시됩니다." Color="#777AAC" FontSize="12" Font="AGOTHIC14" Alignment="HorizontalCenter" TextAlignment="Center" />
+                                <Text Value="아래로 당기면 새로고침" Color="#777AAC" FontSize="12" Font="AGOTHIC14" Alignment="HorizontalCenter" TextAlignment="Center" />
+                                <!--Image File="../../Assets/Icons/refresh.png" Width="50" Height="50" Alignment="Right" Dock="Bottom" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0" Clicked="{btnRefresh}" /-->
+                            </WrapPanel>
+                        </DockPanel>
+                        <WhileActive Threshold="0.5">
+                            <Set indicator.Color="#8458d1" />
+                            <Set tab1.Background="#8b72c2" />
+                            <Set tab1.Color="#ffffff" />
+                            <!--Set indicator.LayoutMaster="page2Tab" />
+                            <Set tab2.Background="#ffffff" />
+                            <Set tab2.Color="#000000" /-->
+                        </WhileActive>
+                    </Page>
+                </PageControl>
+                <BottomBarBackground Dock="Bottom" />
+            </DockPanel>
+    </Panel>
+</Page>

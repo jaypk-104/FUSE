@@ -1,0 +1,3 @@
+if !Android && !iOS {
+/* 22.41MB */ DesktopFonts: "https://www.nuget.org/api/v2/package/fuselibs-desktop-fonts/1.0.0"
+}

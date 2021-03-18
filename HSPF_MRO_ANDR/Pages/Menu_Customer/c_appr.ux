@@ -1,0 +1,255 @@
+<Page ux:Class="c_appr" ux:Name="c_appr" Alignment="Default">
+    <JavaScript File="c_appr.js" />
+    <Router ux:Dependency="router" />
+
+    <Rectangle ux:Name="indicator_1" LayoutMaster="page1Tab_1" Alignment="Bottom" Height="4" Color="#fff">
+        <LayoutAnimation>
+            <Move RelativeTo="WorldPositionChange" X="1" Duration="0.3" Easing="BackIn" />
+        </LayoutAnimation>
+    </Rectangle>
+    <OnBackButton Handler="{backBtnClick}" />
+    <Panel Dock="Fill" Alignment="Default">
+        <Panel ux:Class="Tab_1" ClipToBounds="false" Margin="0,0,0,4" Background="#bdc3c7">
+            <string ux:Property="Text" />
+            <string ux:Property="Color" />
+            <Text Value="{ReadProperty Text}" Color="{ReadProperty Color}" Font="AGOTHIC14" Alignment="Center" />
+        </Panel>
+        <DockPanel Alignment="Default">
+            <Rectangle Alignment="Default" Opacity="1" Margin="0, 0, 0, 0" Height="100" Padding="0, 10, 0, 0" Dock="Top">
+                <Grid Dock="Left" RowCount="1" ColumnCount="3" Width="160" Alignment="Left" CellSpacing="1" Height="100%" Padding="10, 5, 5, 5" Columns="40,1*, auto" MinWidth="160">
+                    <Image Row="0" Column="0" File="../../Assets/Icons/calendar.png" Width="60" Height="60" Alignment="Center" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                    <Text Value="{g_DATE_DD}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Center" FontSize="40" Padding="0, 0, 0, 0" />
+                    <WrapPanel Orientation="Vertical" Alignment="Center">
+                        <Text Value="{g_DATE_YM}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="15" Alignment="CenterLeft" />
+                        <Text Value="{g_DATE_DAY}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Dock="Right" ColumnCount="2" Alignment="Right" CellSpacing="7" Padding="10, 5, 5, 5" Width="160" Columns="auto, 40" Margin="0, 0, 5, 0" MinWidth="160">
+                    <WrapPanel Orientation="Vertical" Alignment="Center" Margin="0, 0, 0, 0">
+                        <Text Value="{g_BP_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="15" TextAlignment="Right" />
+                        <Text Value="{g_USR_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="13" TextAlignment="Right" />
+                    </WrapPanel>
+                    <Image File="../../Assets/Icons/user.png" Width="60" Height="60" Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                </Grid>
+                <LinearGradient>
+                    <GradientStop Offset="0" Color="#4740b4" />
+                    <GradientStop Offset="1" Color="#8C73C2" />
+                </LinearGradient>
+            </Rectangle>
+
+            <Grid Dock="Top" ColumnCount="2" Height="50" Background="#ffffff" Alignment="Default">
+                <Panel ux:Name="page1Tab_1">
+                    <Tab Text="발주결재진행함" ux:Name="tab1_1" Background="#ffffff" Color="#ffffff" />
+                    <Clicked>
+                        <Set navigation_1.Active="page1_1" />
+                        <Set tab1_1.Background="#ffffff" />
+                        <Set tab2_1.Background="#8b72c2" />
+
+                        <Set tab1_1.Color="#000000" />
+                        <Set tab2_1.Color="#ffffff" />
+                    </Clicked>
+                </Panel>
+                <Panel ux:Name="page2Tab_1">
+                    <Tab Text="견적결재진행함" ux:Name="tab2_1" Background="#ffffff" Color="#000000">
+                        <Clicked>
+                            <Set navigation_1.Active="page2_1" />
+                            <Set tab1_1.Background="#8b72c2" />
+                            <Set tab2_1.Background="#ffffff" />
+
+                            <Set tab1_1.Color="#ffffff" />
+                            <Set tab2_1.Color="#000000" />
+                            <!--PlaySound File="../../Assets/Sounds/OK.mp3" /-->
+                        </Clicked>
+                    </Tab>
+                </Panel>
+            </Grid>
+
+            <PageControl ux:Name="navigation_1" Dock="Fill" Alignment="Default">
+                
+                <!--page1 backup-->
+                <Page ux:Name="page1_1" Background="#ffffff" Padding="0, 10, 0, 10" Alignment="Default">
+                    <!--Navigator DefaultPath="subPage_appr"-->
+                    
+                    <Navigator DefaultPath="apprPage">
+                    <Router ux:Name="router_appr" />
+                        <Page ux:Template="apprPage">
+                        
+                            <DockPanel Width="100%" Alignment="Default">
+                            <DockPanel Alignment="Top" Dock="Top">
+                                <Button Dock="Left" Alignment="Top" Width="100" Height="30" Clicked="{backBtn_ios}" Margin="10, 7, 0, 0" Visibility="{device}">
+                                    <Image File="../../Assets/Icons/back.png" Alignment="CenterLeft" Height="20" Color="#00000059" />
+                                    <Text TextAlignment="Left" Alignment="Default" Value="BACK" TextWrapping="NoWrap" FontSize="18" Margin="25, 5, 0, 0" Height="25" Color="#00000059" />
+                                </Button>
+                                <Grid RowCount="1" ColumnCount="2" Width="225" Alignment="TopRight" Margin="0, 0, 5, 0" Dock="Top">
+                                    <CycleButton2 Width="120" Alignment="TopRight" Types="{appr_type}" CurrentType="{appr_currentType}" Clicked="{typesClick}" Dock="Top" Height="45" />
+                                    <CycleButton Width="110" Alignment="TopRight" Modes="{modes}" CurrentMode="{currentMode}" Clicked="{cycleClick}" Dock="Top" Height="45" />
+                                </Grid>
+                               
+                            </DockPanel>
+
+                                <ScrollView Height="85%" Alignment="Default" Dock="Top" Margin="0, 0, 0, 0" SnapMinTransform="False" Padding="0, 0, 0, 0">
+                                    <DockPanel Padding="5, 5, 5, 5" Alignment="Default">
+                                        <CogWheelReload Dock="Top" />
+                                        <WhileTrue Value="{po_appr_cnt}">
+                                            <Image File="../../Assets/Icons/none.png" Width="128" Height="128" Alignment="TopCenter" Dock="Fill" />
+                                        </WhileTrue>
+                                        <WhileTrue Value="{day90}">
+                                            <Text Value="90일 이상의 결재완료문서는 PC에서 조회 바랍니다." Alignment="Center" Dock="Top" Margin="0, 20, 0, 0" FontSize="15" Font="AGOTHIC14" />
+                                        </WhileTrue>
+                                        
+                                        <Each Items="{items}">
+                                            <Rectangle Height="140" Dock="Top" Color="#FFFFFFE8" Margin="0, 0, 0, 7" CornerRadius="10" Padding="5, 5, 5, 0" Clicked="{clicked_appr}">
+                                                <DockPanel Width="100%">
+                                                    <Circle Dock="Left" Height="50" Color="{stsCircleColor1}" Margin="15, 0, 15, 0" ux:Name="stsCircle" Padding="0, 0, 0, 0" Width="50">
+                                                        <Text Value="{APP_STATUS_NM}" Alignment="Center" Font="AGOTHIC14" FontSize="13" Color="White" TextAlignment="Center" />
+                                                    </Circle>
+                                                    <DockPanel Height="100%" Padding="5, 5, 5, 5" Alignment="Default" Dock="Left">
+                                                        <Grid ColumnCount="1" RowCount="2" Dock="Top" Alignment="Default" Rows="auto, auto" CellSpacing="3" Width="100%">
+                                                            <Text Value="{APP_TITLE}" Alignment="Default" Font="AGOTHIC14" FontSize="14" Margin="0, 0, 0, -8" ColumnSpan="2" />
+                                                        </Grid>
+                                                        <Grid ColumnCount="3" RowCount="4" Dock="Top" Alignment="Top" Columns="60, 90, auto" Rows="auto, auto, auto" Margin="0, 10, 0, 0" CellSpacing="3" Width="100%">
+                                                            <Text Value="기안자" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                            <Text Value="기안일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                            <Text Value="금액" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+
+                                                            <Text Value="{APP_USR_NM}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                                                            <Text Value="{APP_DT}" Font="AGOTHIC14" Alignment="CenterLeft" FontSize="13" />
+                                                            <Text Value="{AMT} 원" Font="AGOTHIC14" Dock="Top" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" FontSize="13" />
+
+                                                            <Text Value="발주번호" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" ColumnSpan="3" />
+                                                            <Text Value="{APP_PO_NO}" Font="AGOTHIC14" FontSize="11" Alignment="CenterLeft" ColumnSpan="3" Color="#00000072" />
+                                                            
+                                                            <Text Value="비고" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" ColumnSpan="3" />
+                                                            <Text Value="{REMARK}" Font="AGOTHIC14" FontSize="11" Alignment="CenterLeft" ColumnSpan="3" Color="#00000072" />
+
+                                                        </Grid>
+
+                                                        <Text Value="{APP_NO}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                                        <Text Value="{APP_PO_NO}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                                    </DockPanel>
+                                                </DockPanel>
+
+                                                <Stroke Width="1" Color="#00000027" />
+                                            </Rectangle>
+                                            <LayoutAnimation>
+                                                <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                            </LayoutAnimation>
+                                            <AddingAnimation>
+                                                <Move RelativeTo="Size" X="1" Duration="0.3" Easing="ExponentialIn" />
+                                            </AddingAnimation>
+                                        </Each>
+                                        <Rectangle Height="100" Alignment="Default" Dock="Top" Opacity="1" />
+                                    </DockPanel>
+                                </ScrollView>
+                                <WrapPanel Dock="Bottom" Alignment="HorizontalCenter" Orientation="Vertical" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0">
+                                    <Text Value="아래로 당기면 새로고침" Color="#777AAC" FontSize="12" Font="AGOTHIC14" Alignment="HorizontalCenter" TextAlignment="Center" />
+                                </WrapPanel>
+                            </DockPanel>
+                        </Page>
+                        <SubPage_appr ux:Template="subPage_appr" router="router_appr" />   
+                    </Navigator>
+                    <WhileActive Threshold="0.5">
+                        <Set indicator_1.LayoutMaster="page1Tab_1" />
+                        <Set indicator_1.Color="#8458d1" />
+                        <Set tab1_1.Background="#ffffff" />
+                        <Set tab2_1.Background="#8b72c2" />
+                        <Set tab1_1.Color="#000000" />
+                        <Set tab2_1.Color="#ffffff" />
+                    </WhileActive>
+
+                </Page>
+                <Page ux:Name="page2_1" Background="#ffffff" Padding="10, 10, 10, 10" Alignment="Default">
+                 <JavaScript File="c_appr_inq.js" />
+                     <Navigator DefaultPath="apprPage_inq">
+                        <Router ux:Name="router_appr_inq" />
+                        <Page ux:Template="apprPage_inq">
+                            <DockPanel Width="100%" Alignment="Default">
+                            <DockPanel Alignment="Top" Dock="Top">
+                                <Button Dock="Left" Alignment="Top" Width="100" Height="30" Clicked="{backBtn_ios}" Margin="10, 7, 0, 0" Visibility="{device}">
+                                    <Image File="../../Assets/Icons/back.png" Alignment="CenterLeft" Height="20" Color="#00000059" />
+                                    <Text TextAlignment="Left" Alignment="Default" Value="BACK" TextWrapping="NoWrap" FontSize="18" Margin="25, 5, 0, 0" Height="25" Color="#00000059" />
+                                </Button>
+                                <Grid RowCount="1" ColumnCount="2" Width="225" Alignment="TopRight" Margin="0, 0, 5, 0" Dock="Top">
+                                    <CycleButton2 Width="120" Alignment="TopRight" Types="{appr_type}" CurrentType="{appr_currentType}" Clicked="{typesClick_inq}" Dock="Top" Height="45" />
+                                    <CycleButton Width="110" Alignment="TopRight" Modes="{modes}" CurrentMode="{currentMode}" Clicked="{cycleClick_inq}" Dock="Top" Height="45" />
+                                </Grid>
+                             </DockPanel>
+                                <ScrollView Height="89%" Alignment="Default" Dock="Top" Margin="0, 0, 0, 0" SnapMinTransform="False" Padding="0, 0, 0, 0">
+                                    <DockPanel Padding="5, 5, 5, 5" Alignment="Default">
+                                        <CogWheelReload Dock="Top" />
+                                        <WhileTrue Value="{inq_appr_cnt}">
+                                            <Image File="../../Assets/Icons/none.png" Width="128" Height="128" Alignment="TopCenter" Dock="Fill" />
+                                        </WhileTrue>
+                                        <WhileTrue Value="{day90}">
+                                            <Text Value="90일 이상의 결재완료문서는 PC에서 조회 바랍니다." Alignment="Center" Dock="Top" Margin="0, 20, 0, 0" FontSize="15" Font="AGOTHIC14" />
+                                        </WhileTrue>
+
+                                        <!--Button Margin="0, 0, 0, 0" Width="20%" Clicked="{btnTest1}" Dock="Top">
+                                        <Image Row="1" Column="0" File="../../Assets/icons/send_button.png" Width="50"
+                                        Height="50" Alignment="Default" Margin="10,0,0,0 " /> </Button-->
+
+                                        <Each Items="{items_inq}">
+                                            <Rectangle Height="140" Dock="Top" Color="#FFFFFFE8" Margin="0, 0, 0, 7" CornerRadius="10" Padding="5, 5, 5, 0" Clicked="{clicked_appr_inq}">
+                                                <DockPanel Width="100%">
+                                                    <Circle Dock="Left" Height="50" Color="{stsCircleColor1}" Margin="15, 0, 15, 0" ux:Name="stsCircle" Padding="0, 0, 0, 0" Width="50">
+                                                        <Text Value="{APP_STATUS_NM}" Alignment="Center" Font="AGOTHIC14" FontSize="13" Color="White" TextAlignment="Center" />
+                                                    </Circle>
+                                                    <DockPanel Height="100%" Padding="5, 5, 5, 5" Alignment="Default" Dock="Left">
+                                                        <Grid ColumnCount="1" RowCount="2" Dock="Top" Alignment="Default" Rows="auto, auto" DefaultRow="auto" CellSpacing="3" Width="100%">
+                                                            <Text Value="{APP_TITLE}" Alignment="Default" Font="AGOTHIC14" FontSize="14" Margin="0, 0, 0, 0" ColumnSpan="2" />
+                                                        </Grid>
+                                                        <Grid ColumnCount="3" RowCount="4" Dock="Top" Alignment="Top" Columns="60, 90, auto" Rows="auto, auto" Margin="0, 10, 0, 0" CellSpacing="3" Width="100%">
+                                                            <Text Value="기안자" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                            <Text Value="기안일" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" />
+                                                            <Text Value="금액" Font="AGOTHIC14" FontSize="10" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" />
+
+                                                            <Text Value="{APP_USR_NM}" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                                                            <Text Value="{APP_DT}" Font="AGOTHIC14" Alignment="CenterLeft" FontSize="13" />
+                                                            <Text Value="{AMT} 원" Font="AGOTHIC14" Dock="Top" Alignment="CenterLeft" Margin="0, 0, 0, 0" TextAlignment="Right" Width="80" FontSize="13" />
+
+                                                            <Text Value="견적번호" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" ColumnSpan="3" />
+                                                            <Text Value="{APP_INQ_NO}" Font="AGOTHIC14" FontSize="11" Alignment="CenterLeft" ColumnSpan="3" Color="#00000072" />
+                                                            
+
+                                                            <Text Value="비고" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" ColumnSpan="3" />
+                                                            <Text Value="{REMARK}" Font="AGOTHIC14" FontSize="11" Alignment="CenterLeft" ColumnSpan="3" Color="#00000072" />
+                                                        </Grid>
+
+                                                        <Text Value="{APP_NO}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                                        <Text Value="{APP_INQ_NO}" Alignment="BottomLeft" FontSize="10" Font="AGOTHIC14" Visibility="Hidden" />
+                                                    </DockPanel>
+                                                </DockPanel>
+
+                                                <Stroke Width="1" Color="#00000027" />
+                                            </Rectangle>
+                                            <LayoutAnimation>
+                                                <Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="ElasticIn" />
+                                            </LayoutAnimation>
+                                            <AddingAnimation>
+                                                <Move RelativeTo="Size" X="1" Duration="0.3" Easing="ExponentialIn" />
+                                            </AddingAnimation>
+                                        </Each>
+                                        <Rectangle Height="100" Alignment="Default" Dock="Top" Opacity="1" />
+                                    </DockPanel>
+                                </ScrollView>
+                                <WrapPanel Dock="Bottom" Alignment="HorizontalCenter" Orientation="Vertical" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0">
+                                    <Text Value="아래로 당기면 새로고침" Color="#777AAC" FontSize="12" Font="AGOTHIC14" Alignment="HorizontalCenter" TextAlignment="Center" />
+                                </WrapPanel>
+                            </DockPanel>
+                        </Page>
+                        <SubPage_appr_inq ux:Template="subPage_appr_inq" router="router_appr_inq" />
+                        </Navigator>
+                    <WhileActive Threshold="0.5">
+                        <Set indicator_1.LayoutMaster="page2Tab_1" />
+                        <Set indicator_1.Color="#8458d1" />
+                        <Set tab1_1.Background="#8b72c2" />
+                        <Set tab2_1.Background="#ffffff" />
+                        <Set tab1_1.Color="#ffffff" />
+                        <Set tab2_1.Color="#000000" />
+                    </WhileActive>
+                </Page>
+            </PageControl>
+            <BottomBarBackground Dock="Bottom" />
+        </DockPanel>
+    </Panel>
+</Page>

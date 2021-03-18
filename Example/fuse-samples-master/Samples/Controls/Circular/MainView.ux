@@ -1,0 +1,169 @@
+<App>
+	<Panel ux:Class="ClockTick">
+		<string ux:Property="Text" />
+		<Text Alignment="Center" Value="{ReadProperty Text}" FontSize="24" />
+	</Panel>
+
+	<Panel ux:Class="ClockHand" Anchor="0%,50%" X="50%" Y="50%" Width="29.5%" Height="10%"
+		TransformOrigin="Anchor" SnapToPixels="false">
+		<Circle Alignment="CenterLeft" Height="20%" Aspect="1" BoxSizing="FillAspect"
+			Color="#3df6" Anchor="50%,50%" SnapToPixels="false" />
+		<Circle Alignment="CenterRight" Height="100%" Aspect="1" BoxSizing="FillAspect"
+			Color="#3df3" Anchor="50%,50%" SnapToPixels="false" />
+		<Circle Alignment="CenterRight" Height="20%" Aspect="1" BoxSizing="FillAspect"
+			Color="#3df6" Anchor="50%,50%" SnapToPixels="false" />
+		<Rectangle Alignment="VerticalCenter" Height="3%" MinHeight="1"
+			Color="#3df3" SnapToPixels="false" />
+	</Panel>
+
+	<ClientPanel Background="#ccc">
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+			
+			function formatTime(x) {
+				var q = x.toFixed(0);
+				if (x < 10) {
+					q = "0" + q;
+				}
+				return q;
+			};
+
+			var hoursX = Observable(0);
+			var hoursY = Observable(0);
+			var hours = Observable(function() {
+				return hoursX.value + hoursY.value * 12;
+			});
+			var displayHours = hours.map(function(x) {
+				return formatTime(x);
+			});
+
+			var minutes = Observable(0);
+			var displayMinutes = minutes.map(function(x) {
+				return formatTime(x);
+			});
+
+			module.exports = {
+				hoursX: hoursX,
+				hoursY: hoursY,
+				displayHours: displayHours,
+				minutes: minutes,
+				displayMinutes: displayMinutes
+			};
+		</JavaScript>
+
+		<WhileTrue ux:Name="ShowMinutes">
+			<Change HourSelect.Opacity="0" Duration="0.3" />
+			<Scale Target="HourSelect" Factor="1.5" Duration="0.3" />
+			<Change HourSelect.Visibility="Hidden" Delay="0.3" />
+			<Change MinuteSelect.Visibility="Visible" />
+			<Change HourSelect.IsEnabled="false" />
+		</WhileTrue>
+
+		<Panel Dock="Top" Margin="0,0,0,10">
+			<StackPanel Orientation="Horizontal" Alignment="Center" ItemSpacing="10">
+				<Text ux:Class="ClockText" FontSize="24" Color="#08d" />
+				<ClockText Value="{displayHours}" HitTestMode="LocalBounds">
+					<Tapped>
+						<Set ShowMinutes.Value="false" />
+					</Tapped>
+				</ClockText>
+				<ClockText Value=":" />
+				<ClockText Value="{displayMinutes}" HitTestMode="LocalBounds">
+					<Tapped>
+						<Set ShowMinutes.Value="true" />
+					</Tapped>
+				</ClockText>
+			</StackPanel>
+		</Panel>
+
+		<Panel Aspect="1" BoxSizing="FillAspect" Margin="5">
+
+			<RangeControl2D ValueX="{hoursX}" ValueY="{hoursY}"
+				ux:Name="HourSelect" Minimum="0,0" Maximum="12,1"
+				UserStep="1,1" Visibility="Visible">
+
+				<CircularRangeBehavior ux:Name="HourSlide"
+					StartAngleDegrees="-90" EndAngleDegrees="270"
+					MinimumRadius="0.59" MaximumRadius="0.83" IsWrapping="true" />
+
+				<ClockHand ux:Name="TheHourLine">
+					<Rotation ux:Name="HourRotate" />
+					<Attractor Target="HourRotate.Degrees" Value="{ReadProperty HourSlide.DegreesValue}"
+						Type="SmoothSnap" Unit="Degrees" />
+					<Attractor Target="TheHourLine.Width" ux:Name="HourLineAttractor"
+						Type="SmoothSnap" Unit="Points" />
+					<RangeAnimation Value="{ReadProperty HourSelect.ValueY}" Minimum="0" Maximum="1">
+						<Change HourLineAttractor.Value="41.5" />
+					</RangeAnimation>
+				</ClockHand>
+
+				<InteractionCompleted>
+					<Set ShowMinutes.Value="true" />
+				</InteractionCompleted>
+
+				<Circle Layer="Background" Color="#fff" />
+				<Panel>
+					<CircleLayout Radius="0.75" StartAngleDegrees="-90" EndAngleDegrees="270" />
+					<ClockTick Text="00" />
+					<ClockTick Text="01" />
+					<ClockTick Text="02" />
+					<ClockTick Text="03" />
+					<ClockTick Text="04" />
+					<ClockTick Text="05" />
+					<ClockTick Text="06" />
+					<ClockTick Text="07" />
+					<ClockTick Text="08" />
+					<ClockTick Text="09" />
+					<ClockTick Text="10" />
+					<ClockTick Text="11" />
+				</Panel>
+				<Panel>
+					<CircleLayout ItemSpacingDegrees="5" StartAngleDegrees="-90" EndAngleDegrees="270" />
+					<ClockTick Text="12" />
+					<ClockTick Text="13" />
+					<ClockTick Text="14" />
+					<ClockTick Text="15" />
+					<ClockTick Text="16" />
+					<ClockTick Text="17" />
+					<ClockTick Text="18" />
+					<ClockTick Text="19" />
+					<ClockTick Text="20" />
+					<ClockTick Text="21" />
+					<ClockTick Text="22" />
+					<ClockTick Text="23" />
+				</Panel>
+			</RangeControl2D>
+
+			<RangeControl Value="{minutes}" Minimum="0" Maximum="60" UserStep="5"
+				ux:Name="MinuteSelect" Visibility="Hidden">
+
+				<CircularRangeBehavior ux:Name="MinuteSlide"
+					StartAngleDegrees="-90" EndAngleDegrees="270" IsWrapping="true" />
+
+				<ClockHand Width="41.5%">
+					<Rotation ux:Name="MinuteRotate" />
+					<Attractor Target="MinuteRotate.Degrees" Value="{ReadProperty MinuteSlide.DegreesValue}"
+						Type="SmoothSnap" Unit="Degrees" />
+				</ClockHand>
+
+				<Circle Layer="Background" Color="#fff" />
+				<Panel>
+					<CircleLayout ItemSpacingDegrees="5" StartAngleDegrees="-90" EndAngleDegrees="270" />
+					<ClockTick Text="00" />
+					<ClockTick Text="05" />
+					<ClockTick Text="10" />
+					<ClockTick Text="15" />
+					<ClockTick Text="20" />
+					<ClockTick Text="25" />
+					<ClockTick Text="30" />
+					<ClockTick Text="35" />
+					<ClockTick Text="40" />
+					<ClockTick Text="45" />
+					<ClockTick Text="50" />
+					<ClockTick Text="55" />
+				</Panel>
+			</RangeControl>
+
+		</Panel>
+	</ClientPanel>
+</App>

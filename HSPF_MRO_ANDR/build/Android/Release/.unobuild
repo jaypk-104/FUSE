@@ -1,0 +1,4 @@
+$: 960928445
+BuildCommand: "bash build.sh"
+RunCommand: "bash run.sh"
+Product: "HS MRO.apk"

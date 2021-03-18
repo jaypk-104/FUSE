@@ -1,0 +1,34 @@
+{
+  "buildFiles": [
+    "/Users/jay/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/src/main/CMakeLists.txt",
+    "/Users/jay/Library/Android/sdk/ndk-bundle/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/jay/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.cxx/cmake/release/arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "/Users/jay/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.cxx/cmake/release/arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "HSMRO-Release-arm64-v8a": {
+      "artifactName": "HSMRO",
+      "buildCommand": "/Users/jay/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/.cxx/cmake/release/arm64-v8a\" HSMRO",
+      "abi": "arm64-v8a",
+      "output": "/Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/Android/Release/app/build/intermediates/cmake/release/obj/arm64-v8a/libHSMRO.so",
+      "runtimeFiles": [
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libuImage.a",
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libpng.a",
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libjpeg.a",
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libfreetype.a",
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libXliPlatform.a",
+        "/usr/local/share/uno/Packages/UnoCore/1.12.0/prebuilt/Android/lib/arm64-v8a/libuBase.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_base.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_snapshot.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_libsampler.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_libplatform.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_libbase.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_initializers.a",
+        "/usr/local/share/uno/Packages/Fuse.Scripting.JavaScript/1.12.0/V8/android/lib/arm64-v8a/libv8_init.a"
+      ]
+    }
+  }
+}

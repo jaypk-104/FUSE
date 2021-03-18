@@ -1,0 +1,19 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# We don't really care about the order of changelog entries
+CHANGELOG.md merge=union
+
+# Mark vendored code
+Source/Fuse.Scripting.JavaScript/3rdparty/**                    linguist-vendored
+Source/Fuse.Scripting.JavaScript/Duktape/**                     linguist-vendored
+Source/Fuse.Scripting.JavaScript/FuseJS/Tests/node_modules/**   linguist-vendored
+Source/Fuse.Scripting.JavaScript/JavaScriptCore/3rdparty/**     linguist-vendored
+Source/Fuse.Text/harfbuzz/include/**                            linguist-vendored
+Source/Fuse.Text/icu/**                                         linguist-vendored
+Source/Fuse.WebSockets/iOS/SocketRocket/include/**              linguist-vendored
+
+# Mark vendored files
+jquery.js       linguist-vendored
+zone.js         linguist-vendored
+zone.min.js     linguist-vendored

@@ -1,0 +1,70 @@
+<Page ux:Class="SubPage_po" Height="100%">
+	<DockPanel Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Height="100%" Width="100%">
+        <Button Dock="Top" Alignment="CenterLeft" Width="100" Height="30" Clicked="{btnBackClick_po}" Margin="10, 7, 0, 0">
+            <Image File="../../Assets/Icons/back.png" Alignment="CenterLeft" Height="20" Color="#00000059" />
+            <Text TextAlignment="Left" Alignment="Default" Color="#00000059" Value="BACK" TextWrapping="NoWrap" FontSize="18" Margin="25, 5, 0, 0" Height="25" Font="AGOTHIC14" />
+        </Button>
+        
+        <ScrollView Padding="0, 0, 0, 0" Dock="Top" Height="100%" Margin="10,10, 10, 30" Alignment="Default">
+            <DockPanel Width="100%" Alignment="Default">
+                <Rectangle Dock="Top" Padding="15, 15, 15, 5" Width="100%" Color="#FFFFFFFB">
+                    <DockPanel Alignment="Default">
+                        <Grid ColumnCount="2" Columns="100, 1*" Dock="Top" CellSpacing="5" Rows="auto" >
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="진행상태" Font="AGOTHIC14">
+                                <SolidColor />
+                            </Text>
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_STATUS}" Font="AGOTHIC14" TextAlignment="Right" TextWrapping="NoWrap" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="고객사명" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_BP_NM}" Font="AGOTHIC14" TextAlignment="Right" TextWrapping="Wrap" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="발주번호/순번" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_PO_NO}/{po_PO_SEQ}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="발주일자" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_PO_DT}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="납품요청일" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_DLVY_HOPE_DT}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="납품예정일" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_DLVY_AVL_DT}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <!--Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="입고번호" Font="AGOTHIC14" Visibility="Hidden" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_IN_NO}" Font="AGOTHIC14" TextAlignment="Right"  Visibility="Hidden"/>
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="입고일" Font="AGOTHIC14"  Visibility="Hidden"/>
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_IN_DT}" Font="AGOTHIC14" TextAlignment="Right"  Visibility="Hidden" /-->
+                            <Rectangle ColumnSpan="2" Height="0.5" Alignment="Top" Color="#00000041" Margin="0, 20, 0, 0" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="품목코드" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_ITEM_CD}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="품명" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_ITEM_NM}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="규격" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_SPEC}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="제조사" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_MAKER}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="발주수량" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#C72548" Alignment="Default" Dock="Top" Value="{po_QTY} {po_UNIT}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="단가" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#C72548" Alignment="Default" Dock="Top" Value="{po_PRC}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Rectangle ColumnSpan="2" Height="0.5" Alignment="Top" Color="#00000041" Margin="0, 20, 0, 0" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="발주자/부서" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_ORDER_USER_NM} / {po_ORDER_DEPT_NM}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="청구자/부서" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_REC_USR_NM} / {po_REC_DEPT_NM}" Font="AGOTHIC14" TextAlignment="Right" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="요청자/인수자" Font="AGOTHIC14" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_CLAIM_NAME} / {po_DLVY_USR_NM}" Font="AGOTHIC14" TextAlignment="Right" TextWrapping="Wrap" />
+                            <Text FontSize="15" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="비고" Font="AGOTHIC14" />
+                            <Text FontSize="13" TextColor="#3C4663" Alignment="Default" Dock="Top" Value="{po_REMARK}" Font="AGOTHIC14" TextAlignment="Right" TextWrapping="Wrap" />
+                        </Grid>
+                    </DockPanel>
+                    <Stroke Width="1" Color="#716E6E78" />
+                </Rectangle>
+             <Rectangle Height="300" Alignment="Default" Dock="Top" Opacity="1" />
+            </DockPanel>
+        </ScrollView>
+	
+    </DockPanel>
+	<JavaScript>
+		exports.title = this.Parameter.map(function(param) {
+			return param.title;
+		});
+	</JavaScript>
+	
+<!-- snippet-end -->
+<!-- snippet-begin:NavBarTitle -->
+</Page>

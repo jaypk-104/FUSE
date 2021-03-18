@@ -1,0 +1,14 @@
+{
+  "Packages": [
+    "Fuse"
+  ],
+  "Projects": [
+    "../../Fuse.Common/Tests/FuseTest/FuseTest.unoproj"
+  ],
+  "Includes": [
+    "*"
+  ],
+  "Excludes": [
+    "Scripting/*"
+  ],
+}

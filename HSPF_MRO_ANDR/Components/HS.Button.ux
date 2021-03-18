@@ -1,0 +1,11 @@
+<Panel ux:Class="HS.Button" >
+    <string ux:Property="Text" />
+    <string ux:Property="Value" />
+
+    <Text Value="{ReadProperty Text}" Font="AGOTHIC14" Color="Black" />
+
+    <WhilePressed>
+        <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+    </WhilePressed>
+
+</Panel>

@@ -1,0 +1,20 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Fuse.Drawing",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Collections"
+  ],
+  "Projects": [
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj"
+  ],
+  "Includes": [
+    "*",
+  ],
+  "Excludes": [
+    "Tests/*"
+  ],
+}

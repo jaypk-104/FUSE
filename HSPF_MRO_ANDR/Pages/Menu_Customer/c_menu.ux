@@ -1,0 +1,76 @@
+<Page ux:Class="c_menu" ux:Name="c_menu" Width="100%" Height="100%" Background="White">
+    <JavaScript File="c_menu.js" />
+    <OnBackButton Handler="{backBtn}" />
+    <Router ux:Dependency="router" />
+    	<Panel>
+			<DockPanel Alignment="Default" Padding="0, 0, 0, 0" Height="100%">
+            <Rectangle Alignment="Default" Opacity="1" Margin="0, 0, 0, 0" Height="100" Padding="0, 10, 0, 0" Dock="Top">
+                <Grid Dock="Left" RowCount="1" ColumnCount="3" Width="160" Alignment="Left" CellSpacing="1" Height="100%" Padding="10, 5, 5, 5" Columns="40,1*, auto" MinWidth="160">
+                    <Image Row="0" Column="0" File="../../Assets/Icons/calendar.png" Width="60" Height="60" Alignment="Center" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                    <Text Value="{g_DATE_DD}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Center" FontSize="40" Padding="0, 0, 0, 0" />
+                    <WrapPanel Orientation="Vertical" Alignment="Center">
+                        <Text Value="{g_DATE_YM}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="15" Alignment="CenterLeft" />
+                        <Text Value="{g_DATE_DAY}" TextColor="#ffffff" Font="AGOTHIC14" FontSize="13" Alignment="CenterLeft" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Dock="Right" ColumnCount="2" Alignment="Right" CellSpacing="7" Padding="10, 5, 5, 5" Width="160" Columns="auto, 40" Margin="0, 0, 5, 0" MinWidth="160">
+                    <WrapPanel Orientation="Vertical" Alignment="Center" Margin="0, 0, 0, 0">
+                        <Text Value="{g_BP_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="13" TextAlignment="Right" />
+                        <Text Value="{g_USR_NM_obs}" Font="AGOTHIC14" TextColor="#ffffff" Alignment="Right" FontSize="13" TextAlignment="Right" />
+                    </WrapPanel>
+                    <Image File="../../Assets/Icons/user.png" Width="60" Height="60" Alignment="Default" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" />
+                </Grid>
+                <LinearGradient>
+                    <GradientStop Offset="0" Color="#4740b4" />
+                    <GradientStop Offset="1" Color="#8C73C2" />
+                </LinearGradient>
+            </Rectangle>
+            
+                <DockPanel Height="15%" Alignment="Default" Width="100%" Dock="Top" Margin="20, 0, 0, 0">
+                        <HS.MenuButton Dock="Fill" Width="100%" Clicked="{btnInq}">
+                            <DockPanel Width="100%" Height="100%">
+                                <Image File="../../Assets/Icons/quote.png" Height="100" Width="60" Dock="Left" Margin="0, 0, 0, 0" />
+                                <Text Value="신규상품견적" Alignment="Center" FontSize="40" Font="AGOTHIC14" Color="Black" Dock="Left" Margin="20, 0, 0, 0" />
+                                <Image File="../../Assets/Icons/arrow_right.png" Height="100" Width="50" Dock="Right" />
+                            </DockPanel>
+                        </HS.MenuButton>
+                    </DockPanel>
+                <Rectangle Dock="Top" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Alignment="Default" Height="1" Width="100%" Color="#00000037" />
+                <DockPanel Height="15%" Alignment="Default" Width="100%" Dock="Top" Margin="20, 0, 0, 0">
+                        <HS.MenuButton Value="c_gr" Clicked="{btnGr}" Dock="Fill" Width="100%" Height="100%">
+                            <DockPanel Width="100%" Height="100%">
+                                <Image File="../../Assets/Icons/inbound.png" Height="100" Width="60" Dock="Left" />
+                                    <Text Value="입고관리" Alignment="Center" FontSize="40" Font="AGOTHIC14" Color="Black" Dock="Left" Margin="20, 0, 0, 0" />
+                                <Image File="../../Assets/Icons/arrow_right.png" Height="100" Width="50" Dock="Right" />
+                            </DockPanel>
+                        </HS.MenuButton>
+                    </DockPanel>
+                <Rectangle Dock="Top" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Alignment="Default" Height="1" Width="100%" Color="#00000037" Visibility="{menu_visible}"/>
+                <DockPanel Height="15%" Alignment="Default" Width="100%" Dock="Top" Margin="20, 0, 0, 0" Visibility="{menu_visible}">
+                        <HS.MenuButton Value="c_appr" Clicked="{btnAppr}" Dock="Fill" Width="100%" Height="100%">
+                            <DockPanel Width="100%" Height="100%">
+                                <Image File="../../Assets/Icons/approval.png" Height="100" Width="60" Dock="Left" />
+                                <Text Value="결재관리" Alignment="Center" FontSize="40" Font="AGOTHIC14" Color="Black" Dock="Left" Margin="20, 0, 0, 0" />
+                                <Image File="../../Assets/Icons/arrow_right.png" Height="100" Width="50" Dock="Right" />
+                            </DockPanel>
+                        </HS.MenuButton>
+                    </DockPanel>
+                    <Rectangle Dock="Top" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Alignment="Default" Height="1" Width="100%" Color="#00000037" Visibility="{menu_visible_210129}"/>
+                <DockPanel Height="15%" Alignment="Default" Width="100%" Dock="Top" Margin="20, 0, 0, 0" Visibility="{menu_visible_210129}">
+                        <HS.MenuButton Value="c_po" Clicked="{btnPo}" Dock="Fill" Width="100%" Height="100%">
+                            <DockPanel Width="100%" Height="100%">
+                                <Image File="../../Assets/Icons/order.png" Height="100" Width="60" Dock="Left" />
+                                <Text Value="발주관리" Alignment="Center" FontSize="40" Font="AGOTHIC14" Color="Black" Dock="Left" Margin="20, 0, 0, 0" />
+                                <Image File="../../Assets/Icons/arrow_right.png" Height="100" Width="50" Dock="Right" />
+                            </DockPanel>
+                        </HS.MenuButton>
+                    </DockPanel>
+                <Rectangle Dock="Top" Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Alignment="Default" Height="1" Width="100%" Color="#00000037"/>
+                <Button Dock="Bottom" Alignment="Right" Width="100" Height="30" Clicked="{backBtn}" Margin="10, 7, -10, 10" Visibility="{device}">
+                    <Image File="../../Assets/Icons/back.png" Alignment="CenterLeft" Height="20" Color="#00000059" />
+                    <Text TextAlignment="Left" Alignment="Default" Value="BACK" TextWrapping="NoWrap" FontSize="18" Margin="18, 3, 0, 0" Height="25" Color="#00000059" />
+                </Button>
+            </DockPanel>
+            
+	    </Panel>
+</Page>

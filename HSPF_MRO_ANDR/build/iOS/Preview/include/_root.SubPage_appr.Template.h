@@ -1,0 +1,36 @@
+// This file was generated based on /Users/jay/Dev/Fuse/HSPF_MRO_ANDR/build/iOS/Preview/cache/ux15/SubPage_appr.g.uno.
+// WARNING: Changes might be lost if you edit this file directly.
+
+#pragma once
+#include <Uno.UX.Template.h>
+namespace g{namespace Uno{namespace UX{struct Property1;}}}
+namespace g{namespace Uno{namespace UX{struct Selector;}}}
+namespace g{struct SubPage_appr;}
+namespace g{struct SubPage_appr__Template;}
+
+namespace g{
+
+// public partial sealed class SubPage_appr.Template
+// {
+::g::Uno::UX::Template_type* SubPage_appr__Template_typeof();
+void SubPage_appr__Template__ctor_1_fn(SubPage_appr__Template* __this, ::g::SubPage_appr* parent, ::g::SubPage_appr* parentInstance);
+void SubPage_appr__Template__New1_fn(SubPage_appr__Template* __this, uObject** __retval);
+void SubPage_appr__Template__New2_fn(::g::SubPage_appr* parent, ::g::SubPage_appr* parentInstance, SubPage_appr__Template** __retval);
+
+struct SubPage_appr__Template : ::g::Uno::UX::Template
+{
+    uWeak< ::g::SubPage_appr*> __parent1;
+    uWeak< ::g::SubPage_appr*> __parentInstance1;
+    uStrong< ::g::Uno::UX::Property1*> __self_USR_NM_inst1;
+    uStrong< ::g::Uno::UX::Property1*> __self_USR_ID_inst1;
+    static ::g::Uno::UX::Selector __selector0_;
+    static ::g::Uno::UX::Selector& __selector0() { return SubPage_appr__Template_typeof()->Init(), __selector0_; }
+    static ::g::Uno::UX::Selector __selector1_;
+    static ::g::Uno::UX::Selector& __selector1() { return SubPage_appr__Template_typeof()->Init(), __selector1_; }
+
+    void ctor_1(::g::SubPage_appr* parent, ::g::SubPage_appr* parentInstance);
+    static SubPage_appr__Template* New2(::g::SubPage_appr* parent, ::g::SubPage_appr* parentInstance);
+};
+// }
+
+} // ::g

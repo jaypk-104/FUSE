@@ -1,0 +1,19 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Native Vibration",
+  "Publisher": "Fuse Open",
+  "Packages": [
+    "Uno.Permissions"
+  ],
+  "Projects": [
+    "../Fuse.Triggers/Fuse.Triggers.unoproj",
+    "../Fuse.Scripting/Fuse.Scripting.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+    "../Fuse.Marshal/Fuse.Marshal.unoproj"
+  ],
+  "Includes": [
+    "Vibration.uno:Source",
+    "Vibrate.uno:Source",
+    "VibrationModule.uno:Source"
+  ]
+}

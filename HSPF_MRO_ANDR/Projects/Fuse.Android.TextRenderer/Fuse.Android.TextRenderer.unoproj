@@ -1,0 +1,22 @@
+{
+  "Copyright": "Copyright (c) Fuse Open 2018",
+  "Description": "Android TextRenderer",
+  "Publisher": "Fuse Open",
+  "InternalsVisibleTo": [
+    "Fuse.Android",
+    "Fuse.Views",
+  ],
+  "Projects": [
+    "../Fuse.Controls.Native/Fuse.Controls.Native.unoproj",
+    "../Fuse.Controls.Primitives/Fuse.Controls.Primitives.unoproj",
+    "../Fuse.Controls/Fuse.Controls.unoproj",
+    "../Fuse.Common/Fuse.Common.unoproj",
+    "../Fuse.Drawing/Fuse.Drawing.unoproj",
+    "../Fuse.Elements/Fuse.Elements.unoproj",
+    "../Fuse.Nodes/Fuse.Nodes.unoproj",
+  ],
+  "Includes": [
+    "*",
+    "Internal/*"
+  ]
+}

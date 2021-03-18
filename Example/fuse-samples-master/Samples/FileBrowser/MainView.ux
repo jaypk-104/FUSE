@@ -1,0 +1,11 @@
+<App>
+	<Router ux:Name="router" />
+	<JavaScript>
+		router.goto("directory", "/");
+	</JavaScript>
+	<ClientPanel Background="#373F51">
+		<Navigator DefaultPath="directory">
+			<Directory ux:Template="directory" router="router" />
+		</Navigator>
+	</ClientPanel>
+</App>
